@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./ckziusroda/frontend/src/index.js --output ./ckziusroda/frontend/static/frontend/main.js",
+    "dev": "webpack --mode development --watch ./ckziusroda/frontend/src/index.js --output ./ckziusroda/frontend/static/frontend/main.js",
     "build": "webpack --mode production ./ckziusroda/frontend/src/index.js --output ./ckziusroda/frontend/static/frontend/main.js"
   },
   "keywords": [],

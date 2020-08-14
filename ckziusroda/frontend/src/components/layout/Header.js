@@ -12,7 +12,7 @@ export class Header extends Component {
                 {/* {mailIcon} */}
                 📧
                 <a
-                  href="mailto:"
+                  href="mailto:sekretariat@ckziusroda.edu.pl"
                   style={{ textDecoration: "none" }}
                   className="text-light ml-2"
                 >
@@ -22,7 +22,7 @@ export class Header extends Component {
                 {/* {telephoneIcon} */}
                 📞
                 <a
-                  href="tel:+"
+                  href="tel:612222444"
                   style={{ textDecoration: "none" }}
                   className="text-light ml-2"
                 >
@@ -105,7 +105,7 @@ export class Header extends Component {
               <li className="nav-item">
                 <a href="/">
                   <img
-                    src="https://ckziusroda.edu.pl/wp-content/uploads/2019/10/logo16102019_v1.jpg"
+                    src="../../static/frontend/pictures/logo.jpg"
                     alt="Logo CKZiU"
                     className="img-fluid"
                   />
@@ -365,7 +365,7 @@ export class Header extends Component {
                 </div>
               </li>
               <div className="pr-3"></div>
-              <li class="nav-item">
+              <li className="nav-item">
                 <a
                   className="nav-link text-light font-weight-bold"
                   style={{

@@ -44,7 +44,7 @@ export class Header extends Component {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Przydatne linki
+                  Przyjazne linki
                 </a>
                 <div
                   className="dropdown-menu"
@@ -360,7 +360,7 @@ export class Header extends Component {
                   </a>
                   <div className="dropdown-divider"></div>
                   <a className="dropdown-item" href="#">
-                    ERASMUMS+
+                    ERASMUS+
                   </a>
                 </div>
               </li>

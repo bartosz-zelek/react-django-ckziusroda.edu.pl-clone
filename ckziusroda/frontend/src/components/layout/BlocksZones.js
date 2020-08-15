@@ -5,6 +5,7 @@ export class BlocksZones extends Component {
     window.onload = function () {
       function checkSize() {
         var width = $(window).width();
+
         if (width <= 750) {
           $("#zones").removeClass("position-relative");
         } else {

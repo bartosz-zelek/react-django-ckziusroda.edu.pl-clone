@@ -3,8 +3,9 @@ import ReactDOM from "react-dom";
 
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
-import Banner from "./layout/Banner";
-import { BlocksZones } from "./layout/BlocksZones";
+import Banner from "./main_page/Banner";
+import { BlocksZones } from "./main_page/BlocksZones";
+import News from "./main_page/News";
 
 export class App extends Component {
   render() {
@@ -14,6 +15,7 @@ export class App extends Component {
         <Banner />
         <div className="container">
           <BlocksZones />
+          <News />
         </div>
         <Footer />
       </>

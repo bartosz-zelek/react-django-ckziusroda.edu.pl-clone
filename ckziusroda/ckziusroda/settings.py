@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'posts',
     'rest_framework',
     'frontend',
-    'embed_video'
+    'embed_video',
 ]
 
 MIDDLEWARE = [

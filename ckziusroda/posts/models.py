@@ -2,22 +2,32 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.template.loader import render_to_string
+from django.utils.safestring import mark_safe
+from markdown import markdown
 import os
 
 
 class News(models.Model):
-    title = models.CharField(max_length=200)
-    content = models.TextField()
+    title = models.CharField(
+        max_length=200, blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
-    opublikowany = models.BooleanField(default=True)
+    public = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = "Aktualność"
         verbose_name_plural = "Aktualności"
         ordering = ['-created']
 
+    def markdown_content(self):
+        if self.content:
+            return mark_safe(markdown(self.content))
+        return ""
+
     def __str__(self):
-        return self.title
+        if self.title:
+            return self.title
+        return "Aktualność - {}".format(self.id)
 
 
 class ItemBase(models.Model):

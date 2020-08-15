@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
+import { Provider } from "react-redux";
+import store from "../store";
+
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
-import Banner from "./main_page/Banner";
-import { BlocksZones } from "./main_page/BlocksZones";
-import News from "./main_page/News";
+
+import MainPage from "./main_page/MainPage";
 
 export class App extends Component {
   render() {
     return (
-      <>
-        <Header />
-        <Banner />
-        <div className="container">
-          <BlocksZones />
-          <News />
-        </div>
-        <Footer />
-      </>
+      <Provider store={store}>
+        <>
+          <Header />
+          <MainPage />
+          <Footer />
+        </>
+      </Provider>
     );
   }
 }

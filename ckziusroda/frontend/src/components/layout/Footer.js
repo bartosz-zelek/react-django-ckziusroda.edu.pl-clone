@@ -3,17 +3,9 @@ import React, { Component } from "react";
 export class Footer extends Component {
   render() {
     return (
-      <footer className="bg-dark text-light text-center">
+      <footer className="bg-dark text-light text-center mt-5">
         <div className="p-4">
           <div className="d-flex justify-content-center">
-            {/* <div style={{ width: "20%" }}>
-              <select
-                className="form-control bg-light"
-                style={{ width: "50%" }}
-              >
-                <option>Default select</option>
-              </select>
-            </div> */}
             <div className="w-25 mr-4" style={{ minWidth: "120px" }}>
               Archwium
               <br />

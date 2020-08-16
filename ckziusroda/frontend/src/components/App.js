@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
+
 import { Provider } from "react-redux";
 import store from "../store";
 
@@ -8,16 +10,26 @@ import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 
 import MainPage from "./main_page/MainPage";
+import PostsByCategory from "./posts/PostsByCategory";
 
 export class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <>
-          <Header />
-          <MainPage />
-          <Footer />
-        </>
+        <Router>
+          <>
+            <Header />
+            <Switch>
+              <Route exact path="/" component={MainPage} />
+              <Route
+                exact
+                path="/posty/:category_slug"
+                component={PostsByCategory}
+              />
+            </Switch>
+            <Footer />
+          </>
+        </Router>
       </Provider>
     );
   }

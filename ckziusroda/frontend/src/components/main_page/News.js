@@ -29,8 +29,12 @@ export class News extends Component {
                 {renderHTML(news_obj.markdown_content)}
               </div>
               <div style={{ textAlign: "center" }}>
-                {news_obj.images.map((image) => renderHTML(image.render))}
-                {news_obj.videos.map((video) => renderHTML(video.render))}
+                <p>
+                  {news_obj.images.map((image) => renderHTML(image.render))}
+                </p>
+                <p>
+                  {news_obj.videos.map((video) => renderHTML(video.render))}
+                </p>
               </div>
             </div>
           ))}

@@ -12,6 +12,6 @@ export const getNews = () => (dispatch) => {
       });
     })
     .catch((err) => {
-      dispatch(console.log(err)); //TODO: zająć się tymi błędami
+      console.log(err);
     });
 };

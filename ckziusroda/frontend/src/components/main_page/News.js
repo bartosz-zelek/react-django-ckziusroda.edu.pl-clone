@@ -1,9 +1,3 @@
-//TODO:
-// [x] blank and null to title and content - news
-// [x] HTML styles when creating news in django admin
-// [] HTML in titles?
-// [] show just publicated news
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getNews } from "../../actions/news";

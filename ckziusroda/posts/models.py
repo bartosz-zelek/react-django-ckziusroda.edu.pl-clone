@@ -4,6 +4,8 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from django.contrib.auth.models import User
+from django.conf import settings
+from django.template.defaultfilters import truncatewords_html
 from markdown import markdown
 import os
 
@@ -53,7 +55,7 @@ class News(models.Model):
 
     def markdown_content(self):
         if self.content:
-            return mark_safe(markdown(self.content))
+            returnmark_safe(markdown(self.content))
         return ""
 
     def __str__(self):
@@ -95,7 +97,8 @@ class Post(models.Model):
         max_length=200)
     slug = models.SlugField(unique=True)
     content = models.TextField()
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(
+        auto_now_add=True)
     public = models.BooleanField(default=True)
     owner = models.ForeignKey(
         User, related_name="posts", on_delete=models.SET_NULL, null=True)
@@ -106,10 +109,19 @@ class Post(models.Model):
         verbose_name_plural = "Posty"
         ordering = ['-created']
 
+    def created_date(self):
+        return str(self.created.date())
+
+    def owner_fullname(self):
+        return str(self.owner.get_full_name())
+
     def markdown_content(self):
         if self.content:
-            return mark_safe(markdown(self.content))
+            return truncatewords_html(mark_safe(markdown(self.content)), 40)
         return ""
+
+    def category_name(self):
+        return str(self.category.name)
 
     def __str__(self):
         return self.title

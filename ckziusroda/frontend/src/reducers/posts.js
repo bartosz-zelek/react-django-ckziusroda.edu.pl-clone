@@ -9,7 +9,7 @@ export default function (state = initialState, action) {
     case GET_POSTS_BY_CATEGORY:
       return {
         ...state,
-        news: action.payload,
+        posts: action.payload,
       };
     default:
       return state;

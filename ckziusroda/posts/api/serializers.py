@@ -26,5 +26,5 @@ class NewsSerializer(serializers.ModelSerializer):
 class PostsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('id', 'category', 'title', 'slug', 'content',
-                  'created', 'owner', 'optional_authors')
+        fields = ('id', 'category_name', 'title', 'slug', 'markdown_content',
+                  'created_date', 'owner_fullname', 'optional_authors')

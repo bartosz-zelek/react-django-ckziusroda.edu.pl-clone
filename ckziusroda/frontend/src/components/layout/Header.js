@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 // import { mailIcon, telephoneIcon } from "../common/icons";
 
 export class Header extends Component {
@@ -151,9 +152,9 @@ export class Header extends Component {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <a className="dropdown-item" href="#">
+                  <Link to="/posty/o-szkole" className="dropdown-item">
                     DOKUMENTY SZKOLNE
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
                   <a className="dropdown-item" href="#">
                     HISTORIA

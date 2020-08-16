@@ -1,10 +1,10 @@
 import axios from "axios";
 
-import { GET_POSTS_CATEGORY, GET_POSTS_BY_CATEGORY } from "./types";
+import { GET_POSTS_BY_CATEGORY } from "./types";
 
-export const getPostsByCategory = (category) => (dispatch) => {
+export const getPostsByCategory = (category_slug) => (dispatch) => {
   axios
-    .get(`/api/posts/${category}`)
+    .get(`/api/posts/${category_slug}`)
     .then((res) => {
       dispatch({
         type: GET_POSTS_BY_CATEGORY,

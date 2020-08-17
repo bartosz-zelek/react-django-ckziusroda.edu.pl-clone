@@ -13,6 +13,8 @@ import MainPage from "./main_page/MainPage";
 import PostsByCategory from "./posts/PostsByCategory";
 import PostBySlug from "./posts/PostBySlug";
 
+import "react-calendar/dist/Calendar.css";
+
 export class App extends Component {
   render() {
     return (

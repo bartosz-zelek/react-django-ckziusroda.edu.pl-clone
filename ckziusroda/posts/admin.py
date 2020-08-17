@@ -33,7 +33,11 @@ class PostAdmin(admin.ModelAdmin):
         'slug': ('title',)
     }
     inlines = [ImagePostInline, VideoPostInline]
-    # exclude = ('owner',)
+
+    def get_changeform_initial_data(self, request):
+        get_data = super(PostAdmin, self).get_changeform_initial_data(request)
+        get_data['owner'] = request.user.pk
+        return get_data
 
 
 @admin.register(Category)

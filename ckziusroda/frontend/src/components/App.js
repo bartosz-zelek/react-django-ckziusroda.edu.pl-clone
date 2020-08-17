@@ -11,6 +11,7 @@ import Footer from "./layout/Footer";
 
 import MainPage from "./main_page/MainPage";
 import PostsByCategory from "./posts/PostsByCategory";
+import PostBySlug from "./posts/PostBySlug";
 
 export class App extends Component {
   render() {
@@ -25,6 +26,11 @@ export class App extends Component {
                 exact
                 path="/posty/:category_slug"
                 component={PostsByCategory}
+              />
+              <Route
+                exact
+                path="/posty/:category_slug/:post_slug"
+                component={PostBySlug}
               />
             </Switch>
             <Footer />

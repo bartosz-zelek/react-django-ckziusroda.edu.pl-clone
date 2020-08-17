@@ -152,37 +152,37 @@ export class Header extends Component {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <Link to="/posty/o-szkole" className="dropdown-item">
+                  <Link to="/posty/dokumenty-szkolne" className="dropdown-item">
                     DOKUMENTY SZKOLNE
                   </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link to="/posty/historia" className="dropdown-item">
                     HISTORIA
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link to="/posty/patron" className="dropdown-item">
                     PATRON
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link to="/posty/hymn" className="dropdown-item">
                     HYMN
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link to="/posty/kadra" className="dropdown-item">
                     KADRA
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link to="/posty/losy-absolwentow" className="dropdown-item">
                     LOSY ABSOLWENTÓW
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link to="/posty/monitoring" className="dropdown-item">
                     MONITORING
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link to="/posty/rodo" className="dropdown-item">
                     RODO
-                  </a>
+                  </Link>
                 </div>
               </li>
               <div className="pr-4"></div>

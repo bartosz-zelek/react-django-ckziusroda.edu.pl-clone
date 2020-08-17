@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getPostsByCategory } from "../../actions/posts_by_category";
 
-import Link from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import renderHTML from "react-render-html";
 
@@ -27,13 +27,17 @@ export class PostsByCategory extends Component {
             <div key={post.id} className="border-bottom mb-5">
               <h2>{post.title}</h2>
               <span className="text-muted">
-                📅 {post.created_date} {"\u00A0"} 🙍‍♂️
-                {post.owner_fullname}
+                📅 {post.created_date} {"\u00A0"} 🙍‍♂️ {post.owner_fullname}
               </span>
               <div style={{ textAlign: "justify" }} className="mt-4">
                 {renderHTML(post.markdown_content)}
               </div>
-              <button className="btn btn-primary mb-3">CZYTAJ WIĘCEJ...</button>
+              <Link
+                className="btn btn-primary mb-3"
+                to={this.props.match.params.category_slug + "/" + post.slug}
+              >
+                CZYTAJ WIĘCEJ...
+              </Link>
             </div>
           ))}
         </div>
@@ -41,7 +45,9 @@ export class PostsByCategory extends Component {
     } else {
       return (
         <div className="container">
-          <h1 style={{ textAlign: "center" }}>Ups...</h1>
+          <h1 style={{ textAlign: "center" }} className="mt-5">
+            Ups...
+          </h1>
           <span style={{ textAlign: "center" }}>Ta kategoria jest pusta.</span>
         </div>
       );

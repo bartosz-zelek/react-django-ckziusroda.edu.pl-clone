@@ -95,7 +95,7 @@ class Post(models.Model):
         Category, related_name="posts", on_delete=models.SET_NULL, null=True)
     title = models.CharField(
         max_length=200)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField()
     content = models.TextField()
     created = models.DateTimeField(
         auto_now_add=True)
@@ -108,16 +108,25 @@ class Post(models.Model):
         verbose_name = "Post"
         verbose_name_plural = "Posty"
         ordering = ['-created']
+        unique_together = ('category', 'slug')
 
     def created_date(self):
         return str(self.created.date())
 
     def owner_fullname(self):
-        return str(self.owner.get_full_name())
+        try:
+            return str(self.owner.get_full_name())
+        except:
+            return "Administrator"
 
     def markdown_content(self):
         if self.content:
-            return truncatewords_html(mark_safe(markdown(self.content)), 40)
+            return truncatewords_html(mark_safe(markdown(self.content)), 60)
+        return ""
+
+    def markdown_content_full(self):
+        if self.content:
+            return mark_safe(markdown(self.content))
         return ""
 
     def category_name(self):

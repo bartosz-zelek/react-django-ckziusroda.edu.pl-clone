@@ -3,7 +3,7 @@
 // posts on specific anth and year
 // upload files
 
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
 import { getPostBySlug } from "../../actions/post_by_slug";
 

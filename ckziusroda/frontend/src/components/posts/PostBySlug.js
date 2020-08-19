@@ -1,7 +1,9 @@
 //TODO:
-// edit button? or like click eg. F1 to go to admin edit page
+// edit button? or like click eg. F8 to go to admin edit page
 // posts on specific anth and year
 // upload files
+// do a vertical menu for <=medium devices
+// repair responsibility for small devices
 
 import React, { useEffect } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";

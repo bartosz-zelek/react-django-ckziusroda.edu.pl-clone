@@ -6,6 +6,28 @@ export class Header extends Component {
   render() {
     return (
       <>
+	<div className="d-block d-lg-none">
+	<nav className="navbar navbar-expand-lg justify-content-center">
+            <ul className="navbar-nav mr-5">
+              <li className="nav-item">
+                <a href="/">
+                  <img
+                    src="../../static/frontend/pictures/logo.jpg"
+                    alt="Logo CKZiU"
+                    className="img-fluid"
+                  />
+                </a>
+              </li>
+            </ul>
+            <ul className="navbar-nav ml-5">
+              <li className="nav-item dropdown">
+                  <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button>
+              </li>
+            </ul>
+          </nav>
+	</div>
+
+
         <div className="d-none d-lg-block">
           <nav className="navbar navbar-expand-lg bg-primary d-flex justify-content-around">
             <ul className="navbar-nav mr-5">
@@ -114,7 +136,7 @@ export class Header extends Component {
               </li>
             </ul>
             <ul className="navbar-nav ml-5">
-              <li className="nav-item dropdown">
+              <li className="nav-item">
                 <form className="form-inline my-lg-0">
                   <input
                     className="form-control mr-sm-2 border border-secondary rounded pl-3 pr-3"

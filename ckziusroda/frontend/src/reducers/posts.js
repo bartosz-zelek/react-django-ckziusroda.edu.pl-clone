@@ -10,11 +10,13 @@ export default function (state = initialState, action) {
     case GET_POSTS_BY_CATEGORY:
       return {
         ...state,
+        post: [],
         posts: action.payload,
       };
     case GET_POST_BY_SLUG:
       return {
         ...state,
+        posts: [],
         post: action.payload,
       };
     default:

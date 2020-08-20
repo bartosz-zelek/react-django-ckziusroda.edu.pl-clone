@@ -8,6 +8,7 @@ export class Header extends Component {
   componentDidMount() {
     setTimeout(() => {
       $("#sidebarCollapse").click(function () {
+        console.log("xd");
         $(".vertical-nav").toggleClass("hidden");
       });
     }, 0);
@@ -15,13 +16,19 @@ export class Header extends Component {
   render() {
     return (
       <>
-        <div className="vertical-nav bg-white hidden" id="sidebar">
-          <div className="py-4 px-3 mb-4 bg-light">
+        {/* NAVBAR FOR <=MEDIUM DEVICES */}
+        <div className="vertical-nav bg-primary hidden" id="sidebar">
+          <div className="py-4 px-3 mb-4 bg-primary">
             <div className="media d-flex align-items-center">
-              <ul class="nav flex-column bg-white mb-0">
+              <ul className="nav flex-column mb-0">
+                {/* not working yet */}
+                <li className="nav-item mb-4" style={{ textAlign: "right" }}>
+                  ❌
+                </li>
+
                 <li className="nav-item dropdown">
                   <a
-                    className="nav-link dropdown-toggle"
+                    className="nav-link dropdown-toggle text-light"
                     style={{
                       textDecoration: "none",
                     }}
@@ -85,9 +92,20 @@ export class Header extends Component {
                     </a>
                   </div>
                 </li>
+                <div className="dropdown-divider"></div>
+                <li className="nav-item mb-5 mt-5 d-flex justify-content-center">
+                  <form className="form-inline my-lg-0">
+                    <input
+                      className="form-control mr-sm-2 border border-secondary rounded pl-3 pr-3 bg-light"
+                      type="search"
+                      placeholder="Szukaj 🔎"
+                      aria-label="Search"
+                    ></input>
+                  </form>
+                </li>
                 <li className="nav-item dropdown">
                   <a
-                    className="nav-link dropdown-toggle"
+                    className="nav-link dropdown-toggle text-light"
                     style={{
                       textDecoration: "none",
                     }}
@@ -143,9 +161,10 @@ export class Header extends Component {
                     </Link>
                   </div>
                 </li>
+                <div className="dropdown-divider"></div>
                 <li className="nav-item dropdown">
                   <a
-                    className="nav-link dropdown-toggle"
+                    className="nav-link dropdown-toggle text-light"
                     style={{
                       textDecoration: "none",
                     }}
@@ -187,9 +206,10 @@ export class Header extends Component {
                     </Link>
                   </div>
                 </li>
+                <div className="dropdown-divider"></div>
                 <li className="nav-item dropdown">
                   <a
-                    className="nav-link dropdown-toggle"
+                    className="nav-link dropdown-toggle text-light"
                     style={{
                       textDecoration: "none",
                     }}
@@ -244,9 +264,10 @@ export class Header extends Component {
                     </Link>
                   </div>
                 </li>
+                <div className="dropdown-divider"></div>
                 <li className="nav-item dropdown">
                   <a
-                    className="nav-link dropdown-toggle"
+                    className="nav-link dropdown-toggle text-light"
                     style={{
                       textDecoration: "none",
                     }}
@@ -291,9 +312,10 @@ export class Header extends Component {
                     </Link>
                   </div>
                 </li>
+                <div className="dropdown-divider"></div>
                 <li className="nav-item dropdown">
                   <a
-                    className="nav-link dropdown-toggle"
+                    className="nav-link dropdown-toggle text-light"
                     style={{
                       textDecoration: "none",
                     }}
@@ -329,9 +351,10 @@ export class Header extends Component {
                     </Link>
                   </div>
                 </li>
+                <div className="dropdown-divider"></div>
                 <li className="nav-item">
                   <Link
-                    className="nav-link"
+                    className="nav-link text-light"
                     style={{
                       textDecoration: "none",
                     }}
@@ -344,6 +367,27 @@ export class Header extends Component {
                   >
                     KONTAKT
                   </Link>
+                </li>
+                <div className="dropdown-divider mb-5"></div>
+                <li className="nav-item mb-2">
+                  📧
+                  <a
+                    href="mailto:sekretariat@ckziusroda.edu.pl"
+                    style={{ textDecoration: "none" }}
+                    className="text-light ml-2"
+                  >
+                    sekretariat@ckziusroda.edu.pl
+                  </a>
+                </li>
+                <li className="nav-item">
+                  📞
+                  <a
+                    href="tel:612222444"
+                    style={{ textDecoration: "none" }}
+                    className="text-light ml-2"
+                  >
+                    61 22 22 444
+                  </a>
                 </li>
               </ul>
             </div>
@@ -367,16 +411,17 @@ export class Header extends Component {
                 <button
                   id="sidebarCollapse"
                   type="button"
-                  className="btn rounded-pill shadow-sm px-4"
+                  className="btn rounded-pill shadow-sm px-4 bg-primary"
                 >
                   {menu}
-                  <small className="text-muted ml-1">Menu</small>
+                  <small className="text-light ml-1">Menu</small>
                 </button>
               </li>
             </ul>
           </nav>
         </div>
 
+        {/* NAVBAR FOR >=LARGE DEVICES */}
         <div className="d-none d-lg-block">
           <nav className="navbar navbar-expand-lg bg-primary d-flex justify-content-around">
             <ul className="navbar-nav mr-5">

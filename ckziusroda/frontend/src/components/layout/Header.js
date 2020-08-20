@@ -8,7 +8,9 @@ export class Header extends Component {
   componentDidMount() {
     setTimeout(() => {
       $("#sidebarCollapse").click(function () {
-        console.log("xd");
+        $(".vertical-nav").toggleClass("hidden");
+      });
+      $("#sidebarCollapseExit").click(function () {
         $(".vertical-nav").toggleClass("hidden");
       });
     }, 0);
@@ -22,7 +24,11 @@ export class Header extends Component {
             <div className="media d-flex align-items-center">
               <ul className="nav flex-column mb-0">
                 {/* not working yet */}
-                <li className="nav-item mb-4" style={{ textAlign: "right" }}>
+                <li
+                  className="nav-item mb-4"
+                  id="sidebarCollapseExit"
+                  style={{ textAlign: "right" }}
+                >
                   ❌
                 </li>
 

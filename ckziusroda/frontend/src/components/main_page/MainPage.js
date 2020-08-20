@@ -5,6 +5,7 @@ import News from "./News";
 
 export class MainPage extends Component {
   render() {
+    window.document.title = "CKZiU – Środa Wielkopolska";
     return (
       <>
         <Banner />

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class BlocksZones extends Component {
   render() {
@@ -32,7 +33,9 @@ export class BlocksZones extends Component {
               style={{ height: 90 }}
             />
             <div className="mt-4">&nbsp;</div>
-            <b>Strefa dla ucznia i rodzica</b>
+            <Link to="/post/strefa-dla-ucznia-i-rodzica" className="text-light">
+              <b>Strefa dla ucznia i rodzica</b>
+            </Link>
             <br />
             <span>
               Ubezpieczenie, Podręczniki, Praktyki zawodowe, Egzamin zawodowy,
@@ -49,7 +52,9 @@ export class BlocksZones extends Component {
               style={{ height: 90 }}
             />
             <div className="mt-4">&nbsp;</div>
-            <b>Strefa dla kandydata</b>
+            <Link to="/post/strefa-dla-kandydata" className="text-light">
+              <b>Strefa dla kandydata</b>
+            </Link>
             <br />
             <br />
             <span>
@@ -67,7 +72,9 @@ export class BlocksZones extends Component {
               style={{ height: 90 }}
             />
             <div className="mt-4">&nbsp;</div>
-            <b>Strefa dla nauczyciela</b>
+            <Link to="/post/strefa-dla-nauczyciela" className="text-light">
+              <b>Strefa dla nauczyciela</b>
+            </Link>
             <br />
             <span>Dziennik elektroniczny, Plan lekcji</span>
           </div>
@@ -81,7 +88,9 @@ export class BlocksZones extends Component {
               style={{ height: 90 }}
             />
             <div className="mt-4">&nbsp;</div>
-            <b>Media</b>
+            <Link to="/posty/media" className="text-light">
+              <b>Media</b>
+            </Link>
             <br />
             <br />
             <span>Radio, Instagram, Facebook, Wirtualny spacer, Youtube</span>

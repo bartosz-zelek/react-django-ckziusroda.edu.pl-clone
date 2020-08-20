@@ -11,7 +11,7 @@
 }
 
 .hidden {
-  display: none;
+  left: -300px;
 }
 
 .page-content {
@@ -29,4 +29,8 @@
 #content.active {
   width: 100%;
   margin: 0;
+}
+
+#sidebarCollapseExit:hover {
+  cursor: pointer;
 }

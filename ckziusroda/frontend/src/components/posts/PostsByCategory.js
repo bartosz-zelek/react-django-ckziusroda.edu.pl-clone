@@ -8,24 +8,30 @@ import renderHTML from "react-render-html";
 
 import Calendar from "react-calendar";
 
+import ClipLoader from "react-spinners/ClipLoader";
+
 export const PostsByCategory = (match) => {
   const category_slug = match.match.params.category_slug;
   const posts = useSelector((state) => state.posts.posts);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getPostsByCategory(category_slug));
   }, [category_slug]);
+
   useEffect(() => {
     setTimeout(() => {
       $(".vertical-nav").addClass("hidden");
     }, 0);
   });
+
   const state = {
     date: new Date(),
   };
 
   const onChange = (date) => this.setState({ date });
   if (posts.length > 0) {
+    window.document.title = `${posts[0].category_name} – Środa Wielkopolska`;
     return (
       <div className="container mt-5">
         <div className="row">
@@ -58,7 +64,13 @@ export const PostsByCategory = (match) => {
       </div>
     );
   } else {
-    return <div></div>;
+    return (
+      <div className="container" style={{ textAlign: "center" }}>
+        <div style={{ marginTop: "121px", marginBottom: "121px" }}>
+          <ClipLoader />
+        </div>
+      </div>
+    );
   }
 };
 

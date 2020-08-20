@@ -1,11 +1,12 @@
 //TODO:
-// edit button? or like click eg. F8 to go to admin edit page
-// posts on specific anth and year
+// [x] edit button? or like click eg. F8 to go to admin edit page
+// posts on specific month and year
 // upload files
-// do a vertical menu for <=medium devices
-// repair responsibility for small devices
-// change title when on different subpages
+// [x] do a vertical menu for <=medium devices
+// [x] repair responsibility for small devices
+// [x] change title when on different subpages
 // some Links in header redirect directly to post in some category
+// implement searching
 
 import React, { useEffect } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
@@ -15,14 +16,23 @@ import renderHTML from "react-render-html";
 
 import Calendar from "react-calendar";
 
+import ClipLoader from "react-spinners/ClipLoader";
+
 export const PostBySlug = (match) => {
   const category_slug = match.match.params.category_slug;
   const post_slug = match.match.params.post_slug;
   const post = useSelector((state) => state.posts.post);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getPostBySlug(category_slug, post_slug));
   }, [post_slug, category_slug]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      $(".vertical-nav").addClass("hidden");
+    }, 0);
+  });
 
   const state = {
     date: new Date(),
@@ -31,6 +41,17 @@ export const PostBySlug = (match) => {
   const onChange = (date) => this.setState({ date });
 
   if (post.length > 0) {
+    window.document.title = `${post[0].title} – Środa Wielkopolska`;
+
+    document.onkeypress = function (e) {
+      e = e || window.event;
+      if (e.charCode == 96) {
+        window.open(
+          `${window.location.origin}/admin/posts/post/${post[0].id}/change/`
+        );
+      }
+    };
+
     return (
       <div className="container mt-5">
         <div className="row">
@@ -66,14 +87,10 @@ export const PostBySlug = (match) => {
     );
   } else {
     return (
-      <div className="container mt-5">
-        <h1 style={{ textAlign: "center" }} className="mt-5">
-          Ups...
-          <br />
-          <span style={{ textAlign: "center", fontSize: "20px" }}>
-            Ten post nie istnieje.
-          </span>
-        </h1>
+      <div className="container" style={{ textAlign: "center" }}>
+        <div style={{ marginTop: "121px", marginBottom: "121px" }}>
+          <ClipLoader />
+        </div>
       </div>
     );
   }

@@ -15,6 +15,11 @@ export const PostsByCategory = (match) => {
   useEffect(() => {
     dispatch(getPostsByCategory(category_slug));
   }, [category_slug]);
+  useEffect(() => {
+    setTimeout(() => {
+      $(".vertical-nav").addClass("hidden");
+    }, 0);
+  });
   const state = {
     date: new Date(),
   };

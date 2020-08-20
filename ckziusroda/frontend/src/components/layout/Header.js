@@ -1,13 +1,356 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import { mailIcon, telephoneIcon } from "../common/icons";
+import { menu } from "../common/icons";
+import "../../styles/vertical-navbar.css";
 
 export class Header extends Component {
+  componentDidMount() {
+    setTimeout(() => {
+      $("#sidebarCollapse").click(function () {
+        $(".vertical-nav").toggleClass("hidden");
+      });
+    }, 0);
+  }
   render() {
     return (
       <>
-	<div className="d-block d-lg-none">
-	<nav className="navbar navbar-expand-lg justify-content-center">
+        <div className="vertical-nav bg-white hidden" id="sidebar">
+          <div className="py-4 px-3 mb-4 bg-light">
+            <div className="media d-flex align-items-center">
+              <ul class="nav flex-column bg-white mb-0">
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    href="#"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Przyjazne linki
+                  </a>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <a
+                      className="dropdown-item"
+                      href="https://www.facebook.com/Hipolit-CKZiU-%C5%9Aroda-Wielkopolska-218970334911540/"
+                    >
+                      Facebook
+                    </a>
+                    <div className="dropdown-divider"></div>
+                    <a
+                      className="dropdown-item"
+                      href="https://www.instagram.com/hipolit_sroda_wlkp/?hl=pl"
+                    >
+                      Instagram
+                    </a>
+                    <div className="dropdown-divider"></div>
+                    <a
+                      className="dropdown-item"
+                      href="https://uonetplus.vulcan.net.pl/powiatsredzki"
+                    >
+                      Dziennik elektroniczny
+                    </a>
+                    <div className="dropdown-divider"></div>
+                    <a
+                      className="dropdown-item"
+                      href="https://www.powiatsredzki.pl/powiatsredzki/"
+                    >
+                      Powiat Średzki
+                    </a>
+                    <div className="dropdown-divider"></div>
+                    <a
+                      className="dropdown-item"
+                      href="https://bip.powiatsredzki.pl/powiatsredzki/bip.html"
+                    >
+                      Biuletyn Informacji Publicznej
+                    </a>
+                    <div className="dropdown-divider"></div>
+                    <a
+                      className="dropdown-item"
+                      href="https://ckziusroda.edu.pl/plan/index.html"
+                    >
+                      Plan lekcji
+                    </a>
+                    <div className="dropdown-divider"></div>
+                    <a className="dropdown-item" href="/admin">
+                      Zaloguj - administrator
+                    </a>
+                  </div>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    href="#"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    O SZKOLE
+                  </a>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <Link
+                      to="/posty/dokumenty-szkolne"
+                      className="dropdown-item"
+                    >
+                      DOKUMENTY SZKOLNE
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link to="/posty/historia" className="dropdown-item">
+                      HISTORIA
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link to="/posty/patron" className="dropdown-item">
+                      PATRON
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link to="/posty/hymn" className="dropdown-item">
+                      HYMN
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link to="/posty/kadra" className="dropdown-item">
+                      KADRA
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link
+                      to="/posty/losy-absolwentow"
+                      className="dropdown-item"
+                    >
+                      LOSY ABSOLWENTÓW
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link to="/posty/monitoring" className="dropdown-item">
+                      MONITORING
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link to="/posty/rodo" className="dropdown-item">
+                      RODO
+                    </Link>
+                  </div>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    href="#"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    ŻYCIE SZKOŁY
+                  </a>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <Link className="dropdown-item" to="/posty/wydarzenia">
+                      WYDARZENIA
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="/posty/zawody-sportowe">
+                      ZAWODY SPORTOWE
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="/posty/konkursy">
+                      KONKURSY
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="/posty/tydzien-kultury">
+                      TYDZIEŃ KULTURY
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="/posty/osiagniecia">
+                      OSIĄGNIĘCIA
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="/posty/ankiety">
+                      ANKIETY
+                    </Link>
+                  </div>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    href="#"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    DZIAŁALNOŚĆ
+                  </a>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <Link className="dropdown-item" to="/posty/biblioteka/">
+                      BIBLIOTEKA
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link
+                      className="dropdown-item"
+                      to="/posty/szkolna-akademia-filmowa"
+                    >
+                      SZKOLNA AKADEMIA FILMOWA
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link
+                      className="dropdown-item"
+                      to="/posty/klub-szkol-im-h-cegielskiego"
+                    >
+                      KLUB SZKÓŁ IM. H. CEGIELSKIEGO
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="/posty/wolontariat">
+                      WOLONTARIAT
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="/posty/klasy-policyjne">
+                      KLASY POLICYJNE
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link
+                      className="dropdown-item"
+                      to="/posty/samorzad-szkolny"
+                    >
+                      SAMORZĄD SZKOLNY
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="/posty/eko-szkola">
+                      EKO SZKOŁA
+                    </Link>
+                  </div>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    href="#"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    WSPÓŁPRACA
+                  </a>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <Link className="dropdown-item" to="/posty/nasi-pracodawcy">
+                      NASI PRACODAWCY
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link
+                      className="dropdown-item"
+                      to="/posty/szkoly-partnerskie"
+                    >
+                      SZKOŁY PARTNERSKIE
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="/posty/nasi-partnerzy">
+                      NASI PARTNERZY
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="/posty/oferty-pracy">
+                      OFERTY PRACY
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link to="/posty/monitoring" className="dropdown-item">
+                      MONITORING
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link to="/posty/rodo" className="dropdown-item">
+                      RODO
+                    </Link>
+                  </div>
+                </li>
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle"
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    href="#"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    PROJEKTY
+                  </a>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <Link
+                      className="dropdown-item"
+                      to="/posty/czas-zawodowcow-bis"
+                    >
+                      CZAS ZAWODOWCÓW BIS
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link
+                      className="dropdown-item"
+                      to="/posty/efektywne-doradztwo"
+                    >
+                      EFEKTYWNE DORADZTWO
+                    </Link>
+                    <div className="dropdown-divider"></div>
+                    <Link className="dropdown-item" to="/posty/erasmus">
+                      ERASMUS+
+                    </Link>
+                  </div>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    className="nav-link"
+                    style={{
+                      textDecoration: "none",
+                    }}
+                    to="/posty/kontakt"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    KONTAKT
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="d-block d-lg-none">
+          <nav className="navbar navbar-expand-lg justify-content-center">
             <ul className="navbar-nav mr-5">
               <li className="nav-item">
                 <a href="/">
@@ -19,14 +362,20 @@ export class Header extends Component {
                 </a>
               </li>
             </ul>
-            <ul className="navbar-nav ml-5">
-              <li className="nav-item dropdown">
-                  <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <button
+                  id="sidebarCollapse"
+                  type="button"
+                  className="btn rounded-pill shadow-sm px-4"
+                >
+                  {menu}
+                  <small className="text-muted ml-1">Menu</small>
+                </button>
               </li>
             </ul>
           </nav>
-	</div>
-
+        </div>
 
         <div className="d-none d-lg-block">
           <nav className="navbar navbar-expand-lg bg-primary d-flex justify-content-around">
@@ -126,13 +475,13 @@ export class Header extends Component {
           <nav className="navbar navbar-expand-lg justify-content-center">
             <ul className="navbar-nav mr-5">
               <li className="nav-item">
-                <a href="/">
+                <Link to="/">
                   <img
                     src="../../static/frontend/pictures/logo.jpg"
                     alt="Logo CKZiU"
                     className="img-fluid"
                   />
-                </a>
+                </Link>
               </li>
             </ul>
             <ul className="navbar-nav ml-5">
@@ -231,29 +580,29 @@ export class Header extends Component {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/posty/wydarzenia">
                     WYDARZENIA
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/posty/zawody-sportowe">
                     ZAWODY SPORTOWE
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/posty/konkursy">
                     KONKURSY
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/posty/tydzien-kultury">
                     TYDZIEŃ KULTURY
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/posty/osiagniecia">
                     OSIĄGNIĘCIA
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/posty/ankiety">
                     ANKIETY
-                  </a>
+                  </Link>
                 </div>
               </li>
               <div className="pr-3"></div>
@@ -280,33 +629,39 @@ export class Header extends Component {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/posty/biblioteka/">
                     BIBLIOTEKA
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link
+                    className="dropdown-item"
+                    to="/posty/szkolna-akademia-filmowa"
+                  >
                     SZKOLNA AKADEMIA FILMOWA
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link
+                    className="dropdown-item"
+                    to="/posty/klub-szkol-im-h-cegielskiego"
+                  >
                     KLUB SZKÓŁ IM. H. CEGIELSKIEGO
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/posty/wolontariat">
                     WOLONTARIAT
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/posty/klasy-policyjne">
                     KLASY POLICYJNE
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/posty/samorzad-szkolny">
                     SAMORZĄD SZKOLNY
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/posty/eko-szkola">
                     EKO SZKOŁA
-                  </a>
+                  </Link>
                 </div>
               </li>
               <div className="pr-3"></div>
@@ -333,21 +688,24 @@ export class Header extends Component {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <a className="dropdown-item" href="#">
-                    NASI PRACOWNICY
-                  </a>
+                  <Link className="dropdown-item" to="/posty/nasi-pracodawcy">
+                    NASI PRACODAWCY
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link
+                    className="dropdown-item"
+                    to="/posty/szkoly-partnerskie"
+                  >
                     SZKOŁY PARTNERSKIE
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/posty/nasi-partnerzy">
                     NASI PARTNERZY
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/posty/oferty-pracy">
                     OFERTY PRACY
-                  </a>
+                  </Link>
                 </div>
               </li>
               <div className="pr-3"></div>
@@ -374,30 +732,36 @@ export class Header extends Component {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <a className="dropdown-item" href="#">
+                  <Link
+                    className="dropdown-item"
+                    to="/posty/czas-zawodowcow-bis"
+                  >
                     CZAS ZAWODOWCÓW BIS
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link
+                    className="dropdown-item"
+                    to="/posty/efektywne-doradztwo"
+                  >
                     EFEKTYWNE DORADZTWO
-                  </a>
+                  </Link>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/posty/erasmus">
                     ERASMUS+
-                  </a>
+                  </Link>
                 </div>
               </li>
               <div className="pr-3"></div>
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link text-light font-weight-bold"
                   style={{
                     textDecoration: "none",
                   }}
-                  href="#"
+                  to="/posty/kontakt"
                 >
                   KONTAKT
-                </a>
+                </Link>
               </li>
             </ul>
             <ul></ul>

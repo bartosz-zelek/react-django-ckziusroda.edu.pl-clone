@@ -4,6 +4,8 @@ import { getNews } from "../../actions/news";
 
 import renderHTML from "react-render-html";
 
+import "../../styles/news.css";
+
 export class News extends Component {
   componentDidMount() {
     this.props.getNews();
@@ -13,8 +15,8 @@ export class News extends Component {
     return (
       <div className="mt-5">
         <p
-          style={{ fontSize: "50px", textAlign: "center", fontWeight: "bold" }}
-          className="bg-danger text-light"
+          style={{ textAlign: "center", fontWeight: "bold" }}
+          className="bg-danger text-light news-title"
         >
           AKTUALNOŚCI
         </p>

@@ -11,7 +11,6 @@ import Footer from "./layout/Footer";
 
 import MainPage from "./main_page/MainPage";
 import PostsByCategory from "./posts/PostsByCategory";
-import PostsByCategoryRedirect from "./posts/PostsByCategoryRedirect";
 import PostBySlug from "./posts/PostBySlug";
 
 import "react-calendar/dist/Calendar.css";

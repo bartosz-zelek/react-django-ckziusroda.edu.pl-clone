@@ -4,17 +4,20 @@ export class Footer extends Component {
   render() {
     return (
       <footer className="bg-dark text-light text-center mt-5">
-        <div className="p-4">
+        <div className="p-5 container-fluid">
           <div className="d-flex justify-content-center row">
-            <div className="w-25 mr-4 col" style={{ minWidth: "120px" }}>
+            <div className="col-lg mb-4">
               Archwium
               <br />
               <br />
-              <select className="form-control bg-light">
+              <select
+                className="form-control bg-light"
+                style={{ maxWidth: "200px", display: "inline-block" }}
+              >
                 <option>Small select</option>
               </select>
             </div>
-            <div className="mt-3 w-25 col" style={{ minWidth: "140px" }}>
+            <div className="mt-3 mb-4 col-lg">
               <a href="http://info-omer.home.pl/ckziusroda/">
                 Stara strona CKZiU
               </a>
@@ -24,7 +27,7 @@ export class Footer extends Component {
                 Archiwum WWW
               </a>
             </div>
-            <div className="mt-3 w-25 col" style={{ minWidth: "140px" }}>
+            <div className="mt-3 col-lg mb-4">
               <a href="https://www.facebook.com/Hipolit-CKZiU-%C5%9Aroda-Wielkopolska-218970334911540/">
                 Facebook
               </a>

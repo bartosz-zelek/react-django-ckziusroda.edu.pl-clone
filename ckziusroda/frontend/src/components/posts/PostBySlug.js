@@ -4,6 +4,8 @@
 // upload files
 // do a vertical menu for <=medium devices
 // repair responsibility for small devices
+// change title when on different subpages
+// some Links in header redirect directly to post in some category
 
 import React, { useEffect } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";

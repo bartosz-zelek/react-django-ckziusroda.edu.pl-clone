@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import News, ImageNews, VideoNews, Post, ImagePost, VideoPost, Category
+from .models import News, ImageNews, VideoNews, Post, ImagePost, VideoPost, Category, Document
 
 
 class ImageNewsInline(admin.StackedInline):
@@ -45,3 +45,6 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('name',)
     }
+
+
+admin.site.register(Document)

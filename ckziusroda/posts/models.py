@@ -6,6 +6,8 @@ from django.utils.safestring import mark_safe
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.template.defaultfilters import truncatewords_html
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from markdown import markdown
 import os
 
@@ -144,3 +146,25 @@ class ImagePost(ImageBase):
 class VideoPost(VideoBase):
     post = models.ForeignKey(Post, related_name="videos",
                              on_delete=models.CASCADE, blank=True, null=True)
+
+##############
+###DOCUMENT###
+##############
+
+
+class Document(models.Model):
+    document = models.FileField(upload_to="documents/%Y/%m/%d/")
+    url = models.CharField(max_length=500, blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Dokument"
+        verbose_name_plural = "Dokumenty"
+
+    def __str__(self):
+        return os.path.basename(self.document.name)
+
+
+@receiver(post_save, sender=Document)
+def insert_document_url(sender, instance, **kwargs):
+    path = 'media/' + instance.document.name
+    sender.objects.filter(id=instance.id).update(url=path)

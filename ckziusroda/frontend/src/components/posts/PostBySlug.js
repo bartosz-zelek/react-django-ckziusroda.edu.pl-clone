@@ -1,7 +1,7 @@
 //TODO:
 // [x] edit button? or like click eg. F8 to go to admin edit page
 // posts on specific month and year
-// upload files
+// [x] upload files
 // [x] do a vertical menu for <=medium devices
 // [x] repair responsibility for small devices
 // [x] change title when on different subpages

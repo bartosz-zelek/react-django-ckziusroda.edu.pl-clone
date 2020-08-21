@@ -28,10 +28,10 @@ export const PostsByCategory = (match) => {
   const state = {
     date: new Date(),
   };
-
   const onChange = (date) => this.setState({ date });
   if (posts.length > 0) {
     window.document.title = `${posts[0].category_name} – Środa Wielkopolska`;
+
     return (
       <div className="container mt-5">
         <div className="row">
@@ -74,10 +74,4 @@ export const PostsByCategory = (match) => {
   }
 };
 
-const mapStateToProps = (state) => ({
-  posts: state.posts.posts,
-});
-
-export default connect(mapStateToProps, { getPostsByCategory })(
-  PostsByCategory
-);
+export default connect(null, { getPostsByCategory })(PostsByCategory);

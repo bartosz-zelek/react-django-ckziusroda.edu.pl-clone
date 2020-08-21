@@ -26,7 +26,7 @@ export class App extends Component {
               <Route exact path="/" component={MainPage} />
               <Route
                 exact
-                path="/posty/:category_slug"
+                path="/posty/:category_slug/"
                 component={PostsByCategory}
               />
               <Route

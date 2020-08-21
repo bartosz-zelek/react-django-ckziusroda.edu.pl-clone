@@ -96,8 +96,4 @@ export const PostBySlug = (match) => {
   }
 };
 
-const mapStateToProps = (state) => ({
-  posts: state.posts.post,
-});
-
-export default connect(mapStateToProps, { getPostBySlug })(PostBySlug);
+export default connect(null, { getPostBySlug })(PostBySlug);

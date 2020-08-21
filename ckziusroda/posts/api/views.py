@@ -1,5 +1,5 @@
 from rest_framework import generics
-from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.pagination import LimitOffsetPagination, PageNumberPagination
 from ..models import News, Post
 from .serializers import NewsSerializer, PostsSerializer, PostSerializer
 
@@ -13,7 +13,6 @@ class PostsByCategoryList(generics.ListAPIView):
     def get_queryset(self):
         return Post.objects.filter(category__slug=self.kwargs['category_slug'])
     serializer_class = PostsSerializer
-    # pagination_class = LimitOffsetPagination
 
 
 class PostBySlugDetail(generics.ListAPIView):

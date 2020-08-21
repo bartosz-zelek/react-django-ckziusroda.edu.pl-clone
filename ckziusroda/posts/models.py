@@ -55,7 +55,7 @@ class News(models.Model):
 
     def markdown_content(self):
         if self.content:
-            returnmark_safe(markdown(self.content))
+            return mark_safe(markdown(self.content))
         return ""
 
     def __str__(self):

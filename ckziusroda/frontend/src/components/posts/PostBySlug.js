@@ -5,10 +5,11 @@
 // [x] do a vertical menu for <=medium devices
 // [x] repair responsibility for small devices
 // [x] change title when on different subpages
+// [x] pagiantion
 // some Links in header redirect directly to post in some category
 // implement searching
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";
 import { getPostBySlug } from "../../actions/post_by_slug";
 
@@ -24,6 +25,9 @@ export const PostBySlug = (match) => {
   const post = useSelector((state) => state.posts.post);
   const dispatch = useDispatch();
 
+  const [date, setDate] = useState(new Date());
+  const onChange = (date) => setDate(date);
+
   useEffect(() => {
     dispatch(getPostBySlug(category_slug, post_slug));
   }, [post_slug, category_slug]);
@@ -33,12 +37,6 @@ export const PostBySlug = (match) => {
       $(".vertical-nav").addClass("hidden");
     }, 0);
   });
-
-  const state = {
-    date: new Date(),
-  };
-
-  const onChange = (date) => this.setState({ date });
 
   if (post.length > 0) {
     window.document.title = `${post[0].title} – Środa Wielkopolska`;
@@ -79,7 +77,7 @@ export const PostBySlug = (match) => {
           </div>
           <div className="col-lg-4 d-flex justify-content-center">
             <div>
-              <Calendar onChange={onChange} value={state.date} />
+              <Calendar onChange={onChange} value={date} />
             </div>
           </div>
         </div>

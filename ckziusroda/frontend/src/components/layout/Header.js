@@ -537,7 +537,7 @@ export class Header extends Component {
             </ul>
             <ul className="navbar-nav ml-5">
               <li className="nav-item">
-                <form className="form-inline my-lg-0">
+                <form className="form-inline my-lg-0" action="/szukaj">
                   <input
                     className="form-control mr-sm-2 border border-secondary rounded pl-3 pr-3"
                     type="search"

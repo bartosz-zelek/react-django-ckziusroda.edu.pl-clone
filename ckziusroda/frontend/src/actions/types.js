@@ -1,3 +1,4 @@
 export const GET_NEWS = "GET_NEWS";
 export const GET_POSTS_BY_CATEGORY = "GET_POSTS_BY_CATEGORY";
 export const GET_POST_BY_SLUG = "GET_POST_BY_SLUG";
+export const GET_POSTS_BY_PHRASE = "GET_POSTS_BY_PHRASE";

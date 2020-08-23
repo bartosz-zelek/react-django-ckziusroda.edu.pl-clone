@@ -7,7 +7,7 @@
 // [x] change title when on different subpages
 // [x] pagiantion
 // some Links in header redirect directly to post in some category
-// implement searching
+// [x] implement searching
 
 import React, { useEffect, useState } from "react";
 import { connect, useSelector, useDispatch } from "react-redux";

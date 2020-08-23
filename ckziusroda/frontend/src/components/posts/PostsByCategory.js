@@ -34,59 +34,79 @@ export const PostsByCategory = (match) => {
 
   useEffect(() => {
     setTimeout(() => {
-      $('html, body').animate({ scrollTop: 0 }, 'fast');
+      $("html, body").animate({ scrollTop: 0 }, "fast");
     }, 0);
   }, [currentPage]);
 
-
   if (posts.length > 0) {
-    window.document.title = `${posts[0].category_name} – Środa Wielkopolska`;
+    if (posts !== "NO_RESULTS") {
+      window.document.title = `${posts[0].category_name} – Środa Wielkopolska`;
 
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+      const indexOfLastPost = currentPage * postsPerPage;
+      const indexOfFirstPost = indexOfLastPost - postsPerPage;
+      const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+      const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    return (
-      <div className="container mt-5">
-        <div className="row">
-          <div className="col-lg-8">
-            <h1 className="mb-5">Kategoria: {currentPosts[0].category_name}</h1>
-            {currentPosts.map((post) => (
-              <div key={post.id} className="border-bottom mb-5">
-                <h2>{post.title}</h2>
-                <span className="text-muted">
-                  📅 {post.created_date} {"\u00A0"} 🙍‍♂️ {post.owner_fullname}
-                </span>
-                <div style={{ textAlign: "justify" }} className="mt-4">
-                  {renderHTML(post.markdown_content)}
+      return (
+        <div className="container mt-5">
+          <div className="row">
+            <div className="col-lg-8">
+              <h1 className="mb-5">
+                Kategoria: {currentPosts[0].category_name}
+              </h1>
+              {currentPosts.map((post) => (
+                <div key={post.id} className="border-bottom mb-5">
+                  <h2>{post.title}</h2>
+                  <span className="text-muted">
+                    📅 {post.created_date} {"\u00A0"} 🙍‍♂️ {post.owner_fullname}
+                  </span>
+                  <div style={{ textAlign: "justify" }} className="mt-4">
+                    {renderHTML(post.markdown_content)}
+                  </div>
+                  <Link
+                    className="btn btn-primary mb-3"
+                    to={post.category_slug + "/" + post.slug + "/"}
+                  >
+                    CZYTAJ WIĘCEJ...
+                  </Link>
                 </div>
-                <Link
-                  className="btn btn-primary mb-3"
-                  to={category_slug + "/" + post.slug + "/"}
-                >
-                  CZYTAJ WIĘCEJ...
-                </Link>
+              ))}
+              <div className="d-flex justify-content-center mb-5">
+                <Pagination
+                  postsPerPage={postsPerPage}
+                  totalPosts={posts.length}
+                  paginate={paginate}
+                  currentPage={currentPage}
+                />
               </div>
-            ))}
-            <div className="d-flex justify-content-center mb-5">
-              <Pagination
-                postsPerPage={postsPerPage}
-                totalPosts={posts.length}
-                paginate={paginate}
-                currentPage={currentPage}
-              />
             </div>
-          </div>
-          <div className="col-lg-4 d-flex justify-content-center">
-            <div>
-              <Calendar onChange={onChange} value={date} />
+            <div className="col-lg-4 d-flex justify-content-center">
+              <div>
+                <Calendar onChange={onChange} value={date} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="container mt-5">
+          <div className="row">
+            <div className="col-lg-8">
+              <h1>Ups...</h1>
+              <br />
+              <h2>Ta kategoria jest pusta 🙄</h2>
+            </div>
+            <div className="col-lg-4 d-flex justify-content-center">
+              <div>
+                <Calendar onChange={onChange} value={date} />
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
   } else {
     return (
       <div className="container" style={{ textAlign: "center" }}>

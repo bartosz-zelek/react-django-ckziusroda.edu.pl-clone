@@ -35,11 +35,7 @@ export class App extends Component {
                 path="/posty/:category_slug/:post_slug"
                 component={PostBySlug}
               />
-              <Route
-                exact
-                path="/szukaj/:fraza"
-                component={PostsByPhrase}
-              />
+              <Route exact path="/szukaj/:phrase" component={PostsByPhrase} />
             </Switch>
             <Footer />
           </>

@@ -1,19 +1,19 @@
 import axios from "axios";
 
-import { GET_POSTS_BY_CATEGORY } from "./types";
+import { GET_POSTS_BY_PHRASE } from "./types";
 
-export const getPostsByCategory = (category_slug) => (dispatch) => {
+export const getPostsByPhrase = (phrase) => (dispatch) => {
   axios
-    .get(`/api/posts/${category_slug}/`)
+    .get(`/api/posts/search/${phrase}/`)
     .then((res) => {
       if (res.data.length > 0) {
         dispatch({
-          type: GET_POSTS_BY_CATEGORY,
+          type: GET_POSTS_BY_PHRASE,
           payload: res.data,
         });
       } else {
         dispatch({
-          type: GET_POSTS_BY_CATEGORY,
+          type: GET_POSTS_BY_PHRASE,
           payload: "NO_RESULTS",
         });
       }

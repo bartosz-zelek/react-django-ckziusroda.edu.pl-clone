@@ -15,6 +15,12 @@ class PostsByCategoryList(generics.ListAPIView):
     serializer_class = PostsSerializer
 
 
+class PostsByPhraseList(generics.ListAPIView):
+    def get_queryset(self):
+        return Post.objects.filter(content__icontains=self.kwargs['search_phrase'])
+    serializer_class = PostsSerializer
+
+
 class PostBySlugDetail(generics.ListAPIView):
     def get_queryset(self):
         return Post.objects.filter(category__slug=self.kwargs['category_slug'], slug=self.kwargs['post_slug'])

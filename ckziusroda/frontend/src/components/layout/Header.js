@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 // import { mailIcon, telephoneIcon } from "../common/icons";
 import { menu } from "../common/icons";
 import "../../styles/vertical-navbar.css";
 
 export const Header = () => {
+  const [searchPhrase, setSearchPhrase] = useState("");
+  const history = useHistory();
+
   useEffect(() => {
     setTimeout(() => {
       $("#sidebarCollapse").click(function () {
@@ -16,19 +19,11 @@ export const Header = () => {
     }, 0);
   });
 
-  const [searchPhrase, setSearchPhrase] = useState("");
-  const [submitedSearchInput, setSubmitedSearchInput] = useState(false);
-
   const handleSearchInputSubmit = (e) => {
     e.preventDefault();
-    setSubmitedSearchInput(true);
+    history.push(`/szukaj/${searchPhrase}`);
   };
 
-  if (submitedSearchInput) {
-    const phrase = searchPhrase;
-    setSearchPhrase("");
-    return <Redirect to={`/szukaj/${phrase}`} />;
-  }
   return (
     <>
       {/* NAVBAR FOR <=MEDIUM DEVICES */}
@@ -36,7 +31,6 @@ export const Header = () => {
         <div className="py-4 px-3 mb-4 bg-primary">
           <div className="media d-flex align-items-center">
             <ul className="nav flex-column mb-0">
-              {/* not working yet */}
               <li
                 className="nav-item mb-4"
                 id="sidebarCollapseExit"
@@ -113,14 +107,16 @@ export const Header = () => {
               </li>
               <div className="dropdown-divider"></div>
               <li className="nav-item mb-5 mt-5 d-flex justify-content-center">
-                <form className="form-inline my-lg-0">
+                <form
+                  className="form-inline my-lg-0"
+                  onSubmit={(e) => handleSearchInputSubmit(e)}
+                >
                   <input
                     className="form-control mr-sm-2 border border-secondary rounded pl-3 pr-3 bg-light"
                     type="search"
                     placeholder="Szukaj 🔎"
                     aria-label="Search"
                     onChange={(e) => setSearchPhrase(e.target.value)}
-                    onSubmit={(e) => handleSearchInputSubmit(e)}
                   ></input>
                 </form>
               </li>
@@ -543,7 +539,10 @@ export const Header = () => {
           </ul>
           <ul className="navbar-nav ml-5">
             <li className="nav-item">
-              <form className="form-inline my-lg-0" action="/szukaj">
+              <form
+                className="form-inline my-lg-0"
+                onSubmit={(e) => handleSearchInputSubmit(e)}
+              >
                 <input
                   className="form-control mr-sm-2 border border-secondary rounded pl-3 pr-3"
                   type="search"

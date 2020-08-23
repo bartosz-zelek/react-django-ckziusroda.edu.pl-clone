@@ -134,6 +134,9 @@ class Post(models.Model):
     def category_name(self):
         return str(self.category.name)
 
+    def category_slug(self):
+        return str(self.category.slug)
+
     def __str__(self):
         return self.title
 

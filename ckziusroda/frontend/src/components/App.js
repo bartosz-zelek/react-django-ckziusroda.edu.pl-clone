@@ -12,6 +12,7 @@ import Footer from "./layout/Footer";
 import MainPage from "./main_page/MainPage";
 import PostsByCategory from "./posts/PostsByCategory";
 import PostBySlug from "./posts/PostBySlug";
+import PostsByPhrase from "./posts/PostsByPhrase";
 
 import "react-calendar/dist/Calendar.css";
 
@@ -33,6 +34,11 @@ export class App extends Component {
                 exact
                 path="/posty/:category_slug/:post_slug"
                 component={PostBySlug}
+              />
+              <Route
+                exact
+                path="/szukaj/:fraza"
+                component={PostsByPhrase}
               />
             </Switch>
             <Footer />

@@ -32,6 +32,13 @@ export const PostsByCategory = (match) => {
     }, 0);
   });
 
+  useEffect(() => {
+    setTimeout(() => {
+      $('html, body').animate({ scrollTop: 0 }, 'fast');
+    }, 0);
+  }, [currentPage]);
+
+
   if (posts.length > 0) {
     window.document.title = `${posts[0].category_name} – Środa Wielkopolska`;
 

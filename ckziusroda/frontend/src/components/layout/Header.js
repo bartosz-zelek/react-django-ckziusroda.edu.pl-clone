@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 // import { mailIcon, telephoneIcon } from "../common/icons";
 import { menu } from "../common/icons";
 import "../../styles/vertical-navbar.css";
 
-export class Header extends Component {
-  componentDidMount() {
+export const Header = () => {
+  useEffect(() => {
     setTimeout(() => {
       $("#sidebarCollapse").click(function () {
         $(".vertical-nav").toggleClass("hidden");
@@ -14,10 +14,23 @@ export class Header extends Component {
         $(".vertical-nav").toggleClass("hidden");
       });
     }, 0);
+  });
+
+  const [searchPhrase, setSearchPhrase] = useState("")
+  const [submitedSearchInput, setSubmitedSearchInput] = useState(false)
+
+  const handleSearchInputSubmit = (e) => {
+    e.preventDefault();
+    setSubmitedSearchInput(true);
+    }
+
+  if (submitedSearchInput){
+    const phrase = searchPhrase;
+    setSearchPhrase("");
+    return <Redirect to={`/szukaj/${phrase}`}/>
   }
-  render() {
-    return (
-      <>
+  return (
+    <>
         {/* NAVBAR FOR <=MEDIUM DEVICES */}
         <div className="vertical-nav bg-primary hidden" id="sidebar">
           <div className="py-4 px-3 mb-4 bg-primary">
@@ -106,6 +119,8 @@ export class Header extends Component {
                       type="search"
                       placeholder="Szukaj 🔎"
                       aria-label="Search"
+                      onChange={e => setSearchPhrase(e.target.value)}
+                      onSubmit={e => handleSearchInputSubmit(e)}
                     ></input>
                   </form>
                 </li>
@@ -537,12 +552,18 @@ export class Header extends Component {
             </ul>
             <ul className="navbar-nav ml-5">
               <li className="nav-item">
+<<<<<<< HEAD
                 <form className="form-inline my-lg-0" action="/szukaj">
+=======
+                <form type="text" className="form-inline my-lg-0" onSubmit={e => handleSearchInputSubmit(e)}>
+>>>>>>> 34f80d4fb9451690017cae3453da21ec540ed03a
                   <input
                     className="form-control mr-sm-2 border border-secondary rounded pl-3 pr-3"
                     type="search"
                     placeholder="Szukaj 🔎"
                     aria-label="Search"
+                    value={searchPhrase}
+                    onChange={e => setSearchPhrase(e.target.value)}
                   ></input>
                 </form>
               </li>
@@ -819,8 +840,7 @@ export class Header extends Component {
           </nav>
         </div>
       </>
-    );
-  }
+  )
 }
 
 export default Header;

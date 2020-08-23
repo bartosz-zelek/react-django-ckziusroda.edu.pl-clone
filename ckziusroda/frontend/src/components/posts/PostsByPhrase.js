@@ -20,7 +20,7 @@ export const PostsByPhrase = (match) => {
   const onChange = (date) => setDate(date);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(2);
+  const [postsPerPage] = useState(10);
 
   useEffect(() => {
     dispatch(getPostsByPhrase(search_phrase));
@@ -81,7 +81,7 @@ export const PostsByPhrase = (match) => {
             </div>
             <div className="col-lg-4 d-flex justify-content-center">
               <div>
-                <Calendar onChange={onChange} value={date} />
+                <Calendar onChange={onChange} value={date} locale="pl"/>
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@ export const PostsByPhrase = (match) => {
             </div>
             <div className="col-lg-4 d-flex justify-content-center">
               <div>
-                <Calendar onChange={onChange} value={date} />
+                <Calendar onChange={onChange} value={date} locale="pl"/>
               </div>
             </div>
           </div>

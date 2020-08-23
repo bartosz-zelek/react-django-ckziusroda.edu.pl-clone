@@ -83,7 +83,7 @@ export const PostsByCategory = (match) => {
             </div>
             <div className="col-lg-4 d-flex justify-content-center">
               <div>
-                <Calendar onChange={onChange} value={date} />
+                <Calendar onChange={onChange} value={date} locale="pl"/>
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@ export const PostsByCategory = (match) => {
             </div>
             <div className="col-lg-4 d-flex justify-content-center">
               <div>
-                <Calendar onChange={onChange} value={date} />
+                <Calendar onChange={onChange} value={date} locale="pl"/>
               </div>
             </div>
           </div>

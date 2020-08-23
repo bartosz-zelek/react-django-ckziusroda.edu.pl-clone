@@ -39,6 +39,7 @@ export const PostBySlug = (match) => {
   });
 
   if (post.length > 0) {
+    if (post !== "NO_RESULTS"){
     window.document.title = `${post[0].title} – Środa Wielkopolska`;
 
     document.onkeypress = function (e) {
@@ -77,12 +78,30 @@ export const PostBySlug = (match) => {
           </div>
           <div className="col-lg-4 d-flex justify-content-center">
             <div>
-              <Calendar onChange={onChange} value={date} />
+              <Calendar onChange={onChange} value={date} locale="pl"/>
             </div>
           </div>
         </div>
       </div>
     );
+            } else {
+              return(
+              <div className="container mt-5">
+          <div className="row">
+            <div className="col-lg-8">
+              <h1>Ups...</h1>
+              <br />on
+              <h2>Ten post nie istnieje 🙄</h2>
+            </div>
+            <div className="col-lg-4 d-flex justify-content-center">
+              <div>
+                <Calendar onChange={onChange} value={date} locale="pl"/>
+              </div>
+            </div>
+          </div>
+        </div>
+              )
+            }
   } else {
     return (
       <div className="container" style={{ textAlign: "center" }}>

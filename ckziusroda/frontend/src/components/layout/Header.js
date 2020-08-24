@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 // import { mailIcon, telephoneIcon } from "../common/icons";
 import { menu } from "../common/icons";
 import "../../styles/vertical-navbar.css";

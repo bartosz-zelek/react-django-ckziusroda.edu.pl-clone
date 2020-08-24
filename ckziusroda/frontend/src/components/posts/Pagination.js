@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "../../styles/pagination-style.css";
 
 export const Pagination = ({
@@ -25,13 +25,13 @@ export const Pagination = ({
             number == totalPosts
           ) {
             return (
-              <>
+              <Fragment key={number}>
                 {number == totalPosts && currentPage + 3 <= totalPosts ? (
-                  <li key={number * 999} className="page-item">
+                  <li className="page-item">
                     <span className="page-link">...</span>
                   </li>
                 ) : null}
-                <li key={number} className="page-item">
+                <li className="page-item">
                   <span
                     onClick={() => paginate(number)}
                     className={
@@ -44,11 +44,11 @@ export const Pagination = ({
                   </span>
                 </li>
                 {number == 1 && currentPage >= 4 ? (
-                  <li key={number * 999} className="page-item">
+                  <li className="page-item">
                     <span className="page-link">...</span>
                   </li>
                 ) : null}
-              </>
+              </Fragment>
             );
           }
         })}

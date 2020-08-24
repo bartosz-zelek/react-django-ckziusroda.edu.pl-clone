@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ArchiveMonths from "./ArchiveMonths";
 
 export class Footer extends Component {
   render() {
@@ -10,12 +11,7 @@ export class Footer extends Component {
               Archwium
               <br />
               <br />
-              <select
-                className="form-control bg-light"
-                style={{ maxWidth: "200px", display: "inline-block" }}
-              >
-                <option>Small select</option>
-              </select>
+              <ArchiveMonths />
             </div>
             <div className="mt-3 mb-4 col-lg">
               <a href="http://info-omer.home.pl/ckziusroda/">

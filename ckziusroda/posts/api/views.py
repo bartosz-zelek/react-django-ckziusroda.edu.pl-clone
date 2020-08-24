@@ -21,6 +21,12 @@ class PostsByPhraseList(generics.ListAPIView):
     serializer_class = PostsSerializer
 
 
+class PostsByDateList(generics.ListAPIView):
+    def get_queryset(self):
+        return Post.objects.filter(created__month=self.kwargs['month'], created__year=self.kwargs['year'])
+    serializer_class = PostsSerializer
+
+
 class PostBySlugDetail(generics.ListAPIView):
     def get_queryset(self):
         return Post.objects.filter(category__slug=self.kwargs['category_slug'], slug=self.kwargs['post_slug'])

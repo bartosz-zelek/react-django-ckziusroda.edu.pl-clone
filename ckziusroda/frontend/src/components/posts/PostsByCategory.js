@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 
 import renderHTML from "react-render-html";
 
-import Calendar from "react-calendar";
+import SetCalendar from "../common/SetCalendar";
+import EmptyPage from "../common/EmptyPage";
 
 import ClipLoader from "react-spinners/ClipLoader";
 
@@ -15,9 +16,6 @@ export const PostsByCategory = (match) => {
   const category_slug = match.match.params.category_slug;
   const posts = useSelector((state) => state.posts.posts);
   const dispatch = useDispatch();
-
-  const [date, setDate] = useState(new Date());
-  const onChange = (date) => setDate(date);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
@@ -83,29 +81,14 @@ export const PostsByCategory = (match) => {
             </div>
             <div className="col-lg-4 d-flex justify-content-center">
               <div>
-                <Calendar onChange={onChange} value={date} locale="pl"/>
+                <SetCalendar />
               </div>
             </div>
           </div>
         </div>
       );
     } else {
-      return (
-        <div className="container mt-5">
-          <div className="row">
-            <div className="col-lg-8">
-              <h1>Ups...</h1>
-              <br />
-              <h2>Ta kategoria jest pusta 🙄</h2>
-            </div>
-            <div className="col-lg-4 d-flex justify-content-center">
-              <div>
-                <Calendar onChange={onChange} value={date} locale="pl"/>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
+      return <EmptyPage h1="Ups..." h2="Ta kategoria jest pusta 🙄" />;
     }
   } else {
     return (

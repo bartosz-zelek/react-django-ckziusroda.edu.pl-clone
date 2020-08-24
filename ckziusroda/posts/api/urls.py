@@ -9,6 +9,8 @@ urlpatterns = [
          views.PostsByCategoryList.as_view(), name='posts_by_category'),
     path('posts/search/<str:search_phrase>/',
          views.PostsByPhraseList.as_view(), name='posts_by_phrase'),
+    path('posts/date/<int:year>/<int:month>/',
+         views.PostsByDateList.as_view(), name='posts_by_date'),
     path('posts/<slug:category_slug>/<slug:post_slug>/',
          views.PostBySlugDetail.as_view(), name='post_by_slug')
 ]

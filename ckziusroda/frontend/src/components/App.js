@@ -13,8 +13,10 @@ import MainPage from "./main_page/MainPage";
 import PostsByCategory from "./posts/PostsByCategory";
 import PostBySlug from "./posts/PostBySlug";
 import PostsByPhrase from "./posts/PostsByPhrase";
+import PostsByDate from "./posts/PostsByDate";
 
 import "react-calendar/dist/Calendar.css";
+import "../styles/body.css";
 
 export class App extends Component {
   render() {
@@ -36,6 +38,11 @@ export class App extends Component {
                 component={PostBySlug}
               />
               <Route exact path="/szukaj/:phrase" component={PostsByPhrase} />
+              <Route
+                exact
+                path="/archiwum/:year/:month"
+                component={PostsByDate}
+              />
             </Switch>
             <Footer />
           </>

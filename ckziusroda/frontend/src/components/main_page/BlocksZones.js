@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import "../../styles/zones.css";
+
 export class BlocksZones extends Component {
   render() {
     window.onload = function () {
@@ -33,7 +35,10 @@ export class BlocksZones extends Component {
               style={{ height: 90 }}
             />
             <div className="mt-4">&nbsp;</div>
-            <Link to="/post/strefa-dla-ucznia-i-rodzica" className="text-light">
+            <Link
+              to="/posty/strefa-dla-ucznia-i-rodzica"
+              className="text-light"
+            >
               <b>Strefa dla ucznia i rodzica</b>
             </Link>
             <br />
@@ -52,7 +57,7 @@ export class BlocksZones extends Component {
               style={{ height: 90 }}
             />
             <div className="mt-4">&nbsp;</div>
-            <Link to="/post/strefa-dla-kandydata" className="text-light">
+            <Link to="/posty/strefa-dla-kandydata" className="text-light">
               <b>Strefa dla kandydata</b>
             </Link>
             <br />
@@ -72,7 +77,7 @@ export class BlocksZones extends Component {
               style={{ height: 90 }}
             />
             <div className="mt-4">&nbsp;</div>
-            <Link to="/post/strefa-dla-nauczyciela" className="text-light">
+            <Link to="/posty/strefa-dla-nauczyciela" className="text-light">
               <b>Strefa dla nauczyciela</b>
             </Link>
             <br />

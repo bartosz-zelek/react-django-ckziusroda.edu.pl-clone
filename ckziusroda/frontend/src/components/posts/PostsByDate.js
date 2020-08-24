@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { getPostsByPhrase } from "../../actions/posts_by_phrase";
+import { getPostsByDate } from "../../actions/posts_by_date";
 import { Pagination } from "./Pagination";
 
 import { Link } from "react-router-dom";
@@ -9,11 +9,13 @@ import renderHTML from "react-render-html";
 
 import SetCalendar from "../common/SetCalendar";
 import EmptyPage from "../common/EmptyPage";
+import months from "../common/MonthsDict";
 
 import ClipLoader from "react-spinners/ClipLoader";
 
-export const PostsByPhrase = (match) => {
-  const search_phrase = match.match.params.phrase;
+export const PostsByDate = (match) => {
+  const year = match.match.params.year;
+  const month = match.match.params.month;
   const posts = useSelector((state) => state.posts.posts);
   const dispatch = useDispatch();
 
@@ -21,8 +23,8 @@ export const PostsByPhrase = (match) => {
   const [postsPerPage] = useState(10);
 
   useEffect(() => {
-    dispatch(getPostsByPhrase(search_phrase));
-  }, [search_phrase]);
+    dispatch(getPostsByDate(month, year));
+  }, [month, year]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -38,7 +40,7 @@ export const PostsByPhrase = (match) => {
 
   if (posts.length > 0) {
     if (posts !== "NO_RESULTS") {
-      window.document.title = `${search_phrase} – Środa Wielkopolska`;
+      window.document.title = `${months[month]} ${year} – Środa Wielkopolska`;
 
       const indexOfLastPost = currentPage * postsPerPage;
       const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -50,7 +52,7 @@ export const PostsByPhrase = (match) => {
         <div className="container mt-5">
           <div className="row">
             <div className="col-lg-8">
-              <h1 className="mb-5">Fraza: {`"${search_phrase}"`}</h1>
+              <h1 className="mb-5">Miesiąc: {`${months[month]} ${year}`}</h1>
               {currentPosts.map((post) => (
                 <div key={post.id} className="border-bottom mb-5">
                   <h2>{post.title}</h2>
@@ -86,7 +88,12 @@ export const PostsByPhrase = (match) => {
         </div>
       );
     } else {
-      return <EmptyPage h1={`Fraza: "${search_phrase}"`} h2="Brak wyników." />;
+      return (
+        <EmptyPage
+          h1={`Miesiąc: ${months[month]} ${year}`}
+          h2="Brak wyników."
+        />
+      );
     }
   } else {
     return (
@@ -99,4 +106,4 @@ export const PostsByPhrase = (match) => {
   }
 };
 
-export default connect(null, { getPostsByPhrase })(PostsByPhrase);
+export default connect(null, { getPostsByDate })(PostsByDate);

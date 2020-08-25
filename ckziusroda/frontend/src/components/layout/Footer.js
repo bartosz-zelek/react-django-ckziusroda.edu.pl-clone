@@ -37,7 +37,7 @@ export class Footer extends Component {
           <div className="border-top m-5"></div>
           <div>
             Wszelkie prawa zastrzeżone &copy; CKZiU Środa Wielkopolska.
-            Stworzył: <a href="https://github.com/bartox7777/">bartox;</a>
+            Stworzył: <a href="https://github.com/bartox7777/" target="_blank">bartox;</a>
           </div>
         </div>
       </footer>

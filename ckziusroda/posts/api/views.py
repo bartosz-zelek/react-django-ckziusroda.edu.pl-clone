@@ -17,7 +17,9 @@ class PostsByCategoryList(generics.ListAPIView):
 
 class PostsByPhraseList(generics.ListAPIView):
     def get_queryset(self):
-        return Post.objects.filter(content__icontains=self.kwargs['search_phrase'])
+        qs = Post.objects.filter(content__icontains=self.kwargs['search_phrase']) | Post.objects.filter(
+            title__icontains=self.kwargs['search_phrase'])
+        return qs
     serializer_class = PostsSerializer
 
 

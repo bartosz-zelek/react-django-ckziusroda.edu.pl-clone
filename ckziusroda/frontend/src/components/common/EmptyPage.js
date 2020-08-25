@@ -5,7 +5,7 @@ const EmptyPage = ({ h1, h2 }) => {
   return (
     <div className="container mt-5">
       <div className="row">
-        <div className="col-lg-8">
+        <div className="col-lg-8 mb-5">
           <h1>{h1}</h1>
           <br />
           <h2>{h2}</h2>

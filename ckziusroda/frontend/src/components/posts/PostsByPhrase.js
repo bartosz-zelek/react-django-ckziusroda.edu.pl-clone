@@ -38,7 +38,7 @@ export const PostsByPhrase = (match) => {
 
   if (posts.length > 0) {
     if (posts !== "NO_RESULTS") {
-      window.document.title = `${search_phrase} – Środa Wielkopolska`;
+      window.document.title = `${search_phrase} – CKZiU`;
 
       const indexOfLastPost = currentPage * postsPerPage;
       const indexOfFirstPost = indexOfLastPost - postsPerPage;

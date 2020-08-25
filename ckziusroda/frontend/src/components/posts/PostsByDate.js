@@ -40,7 +40,7 @@ export const PostsByDate = (match) => {
 
   if (posts.length > 0) {
     if (posts !== "NO_RESULTS") {
-      window.document.title = `${months[month]} ${year} – Środa Wielkopolska`;
+      window.document.title = `${months[month]} ${year} – CKZiU`;
 
       const indexOfLastPost = currentPage * postsPerPage;
       const indexOfFirstPost = indexOfLastPost - postsPerPage;

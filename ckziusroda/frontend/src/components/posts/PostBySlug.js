@@ -38,7 +38,7 @@ export const PostBySlug = (match) => {
 
   if (post.length > 0) {
     if (post !== "NO_RESULTS") {
-      window.document.title = `${post[0].title} – Środa Wielkopolska`;
+      window.document.title = `${post[0].title} – CKZiU`;
 
       document.onkeypress = function (e) {
         e = e || window.event;

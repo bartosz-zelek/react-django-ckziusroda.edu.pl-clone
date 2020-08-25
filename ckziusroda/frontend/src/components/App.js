@@ -15,6 +15,8 @@ import PostBySlug from "./posts/PostBySlug";
 import PostsByPhrase from "./posts/PostsByPhrase";
 import PostsByDate from "./posts/PostsByDate";
 
+import Login from "./authorization/Login";
+
 import "react-calendar/dist/Calendar.css";
 import "../styles/body.css";
 
@@ -43,6 +45,7 @@ export class App extends Component {
                 path="/archiwum/:year/:month"
                 component={PostsByDate}
               />
+              <Route exact path="/zaloguj" component={Login} />
             </Switch>
             <Footer />
           </>

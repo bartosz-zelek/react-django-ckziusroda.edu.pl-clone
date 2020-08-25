@@ -38,7 +38,7 @@ export const PostsByCategory = (match) => {
 
   if (posts.length > 0) {
     if (posts !== "NO_RESULTS") {
-      window.document.title = `${posts[0].category_name} – Środa Wielkopolska`;
+      window.document.title = `${posts[0].category_name} – CKZiU`;
 
       const indexOfLastPost = currentPage * postsPerPage;
       const indexOfFirstPost = indexOfLastPost - postsPerPage;

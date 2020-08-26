@@ -56,6 +56,4 @@ const Login = () => {
   );
 };
 
-// const
-
 export default Login;

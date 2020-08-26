@@ -31,7 +31,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'frontend',
     'embed_video',
+    'knox'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -97,7 +102,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'pl'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'Europe/Warsaw'
 
@@ -113,11 +118,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ],
-}
+# REST_FRAMEWORK = {
+#     # 'DEFAULT_PERMISSION_CLASSES': (
+#     #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+#     # ),
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'knox.auth.TokenAuthentication',
+#     )
+# }
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

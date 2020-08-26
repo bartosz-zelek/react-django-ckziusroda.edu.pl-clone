@@ -4,7 +4,7 @@ from . import views
 
 
 urlpatterns = [
-    path('news/', views.NewsListView.as_view(), name='news_list'),
+    path('news/', views.NewsList.as_view(), name='news_list'),
     path('posts/<slug:category_slug>/',
          views.PostsByCategoryList.as_view(), name='posts_by_category'),
     path('posts/search/<str:search_phrase>/',

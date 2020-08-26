@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
-import { getPostsByDate } from "../../actions/posts_by_date";
+import { useDispatch, useSelector } from "react-redux";
+import { getPostsByDate } from "../../actions/posts";
 import { Pagination } from "./Pagination";
 
 import { Link } from "react-router-dom";
@@ -106,4 +106,4 @@ export const PostsByDate = (match) => {
   }
 };
 
-export default connect(null, { getPostsByDate })(PostsByDate);
+export default PostsByDate;

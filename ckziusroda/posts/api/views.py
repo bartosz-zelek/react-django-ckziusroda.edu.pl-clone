@@ -4,7 +4,7 @@ from ..models import News, Post
 from .serializers import NewsSerializer, PostsSerializer, PostSerializer
 
 
-class NewsListView(generics.ListAPIView):
+class NewsList(generics.ListAPIView):
     queryset = News.objects.filter(public=True)[:6]
     serializer_class = NewsSerializer
 

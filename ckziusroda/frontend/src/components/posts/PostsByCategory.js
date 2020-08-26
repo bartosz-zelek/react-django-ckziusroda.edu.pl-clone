@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
-import { getPostsByCategory } from "../../actions/posts_by_category";
+import { useDispatch, useSelector } from "react-redux";
+import { getPostsByCategory } from "../../actions/posts";
 import { Pagination } from "./Pagination";
 
 import { Link } from "react-router-dom";
@@ -101,4 +101,4 @@ export const PostsByCategory = (match) => {
   }
 };
 
-export default connect(null, { getPostsByCategory })(PostsByCategory);
+export default PostsByCategory;

@@ -27,6 +27,7 @@ export const Header = () => {
   return (
     <>
       {/* NAVBAR FOR <=MEDIUM DEVICES */}
+      {/* modeled on https://jsfiddle.net/bootstrapious/ko18ravd */}
       <div className="vertical-nav bg-primary hidden" id="sidebar">
         <div className="py-4 px-3 mb-4 bg-primary">
           <div className="media d-flex align-items-center">

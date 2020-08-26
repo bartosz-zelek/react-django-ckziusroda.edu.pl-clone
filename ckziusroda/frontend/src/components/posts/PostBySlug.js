@@ -1,17 +1,6 @@
-//TODO:
-// [x] edit button? or like click eg. F8 to go to admin edit page
-// [x] posts on specific month and year
-// [x] upload files
-// [x] do a vertical menu for <=medium devices
-// [x] repair responsibility for small devices
-// [x] change title when on different subpages
-// [x] pagiantion
-// *some Links in header redirect directly to post in some category - will be solved during the completion of the page
-// [x] implement searching
-
 import React, { useEffect } from "react";
-import { connect, useSelector, useDispatch } from "react-redux";
-import { getPostBySlug } from "../../actions/post_by_slug";
+import { useSelector, useDispatch } from "react-redux";
+import { getPostBySlug } from "../../actions/posts";
 
 import renderHTML from "react-render-html";
 
@@ -101,4 +90,4 @@ export const PostBySlug = (match) => {
   }
 };
 
-export default connect(null, { getPostBySlug })(PostBySlug);
+export default PostBySlug;

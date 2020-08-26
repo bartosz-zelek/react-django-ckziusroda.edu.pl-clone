@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 
+import { useDispatch } from "react-redux";
+
+import { login } from "../../actions/authentication";
+
 const Login = () => {
   window.document.title = "Zaloguj się – CKZiU";
 
-  const [login, setLogin] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(login, password);
+    dispatch(login(username, password));
   };
 
   return (
@@ -21,12 +27,12 @@ const Login = () => {
         <br />
         <form onSubmit={(e) => handleSubmit(e)}>
           <div className="form-group">
-            <label htmlFor="inputLogin">Login:</label>
+            <label htmlFor="inputUsername">Nazwa użytkownika:</label>
             <input
               className="form-control"
-              id="linputLogin"
-              onChange={(e) => setLogin(e.target.value)}
-              value={login}
+              id="inputUsername"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
             />
           </div>
           <div className="form-group">
@@ -49,5 +55,7 @@ const Login = () => {
     </div>
   );
 };
+
+// const
 
 export default Login;

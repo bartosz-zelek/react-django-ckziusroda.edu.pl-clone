@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
-import { getPostsByPhrase } from "../../actions/posts_by_phrase";
+import { useDispatch, useSelector } from "react-redux";
+import { getPostsByPhrase } from "../../actions/posts";
 import { Pagination } from "./Pagination";
 
 import { Link } from "react-router-dom";
@@ -99,4 +99,4 @@ export const PostsByPhrase = (match) => {
   }
 };
 
-export default connect(null, { getPostsByPhrase })(PostsByPhrase);
+export default PostsByPhrase;

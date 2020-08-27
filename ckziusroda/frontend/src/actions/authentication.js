@@ -8,7 +8,10 @@ import {
   USER_LOADING,
   USER_LOADED,
   AUTH_ERROR,
+  LOGOUT_SUCCESS,
 } from "./types";
+
+import { showAlert } from "./alerts";
 
 export const login = (username, password) => (dispatch) => {
   const config = {
@@ -27,43 +30,58 @@ export const login = (username, password) => (dispatch) => {
       });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch(showAlert(err.response.data, "error"));
       dispatch({
         type: LOGIN_FAIL,
       });
     });
 };
 
-export const loadUser = () => (dispatch, getState) => {
-  dispatch({ type: USER_LOADING });
+export const logout = () => (dispatch, getState) => {
+  // body as null
   axios
-    .get("/api/auth/user", tokenConfig(getState))
+    .post("api/auth/logout/", null, tokenConfig(getState))
     .then((res) => {
-      dispatch({
-        type: USER_LOADED,
-        payload: res.data,
-      });
+      dispatch({ type: LOGOUT_SUCCESS });
     })
     .catch((err) => {
       console.log(err);
-      dispatch({
-        type: AUTH_ERROR,
-      });
     });
+};
+
+export const loadUser = () => (dispatch, getState) => {
+  const config = tokenConfig(getState);
+  if (config) {
+    dispatch({ type: USER_LOADING });
+    axios
+      .get("/api/auth/user", tokenConfig(getState))
+      .then((res) => {
+        dispatch({
+          type: USER_LOADED,
+          payload: res.data,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: AUTH_ERROR,
+        });
+      });
+  }
 };
 
 export const tokenConfig = (getState) => {
   const token = getState().authentication.token;
 
+  if (!token) {
+    return null;
+  }
+
   const config = {
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Token ${token}`,
     },
   };
-
-  if (token) {
-    config.headers["Authorization"] = `Token ${token}`;
-  }
 
   return config;
 };

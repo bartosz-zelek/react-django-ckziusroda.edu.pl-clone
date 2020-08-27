@@ -1,3 +1,6 @@
+//TODO:
+//[] redirect if logged in
+
 import React, { useState } from "react";
 
 import { useDispatch } from "react-redux";

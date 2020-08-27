@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+
+import { logout } from "../../actions/authentication";
+
 // import { mailIcon, telephoneIcon } from "../common/icons";
 import { menu } from "../common/icons";
 import "../../styles/vertical-navbar.css";
@@ -7,6 +11,9 @@ import "../../styles/vertical-navbar.css";
 export const Header = () => {
   const [searchPhrase, setSearchPhrase] = useState("");
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const auth = useSelector((state) => state.authentication);
 
   useEffect(() => {
     setTimeout(() => {

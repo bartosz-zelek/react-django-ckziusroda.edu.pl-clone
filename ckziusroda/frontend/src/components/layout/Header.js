@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 
-import { logout } from "../../actions/authentication";
-
 // import { mailIcon, telephoneIcon } from "../common/icons";
 import { menu } from "../common/icons";
 import "../../styles/vertical-navbar.css";

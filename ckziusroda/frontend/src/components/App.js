@@ -26,7 +26,7 @@ import { loadUser } from "../actions/authentication";
 import "react-calendar/dist/Calendar.css";
 import "../styles/body.css";
 
-export const App = () => {
+const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   });

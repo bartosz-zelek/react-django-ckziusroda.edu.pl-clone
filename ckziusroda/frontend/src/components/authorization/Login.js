@@ -8,12 +8,12 @@ import { useDispatch } from "react-redux";
 import { login } from "../../actions/authentication";
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   window.document.title = "Zaloguj się – CKZiU";
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();

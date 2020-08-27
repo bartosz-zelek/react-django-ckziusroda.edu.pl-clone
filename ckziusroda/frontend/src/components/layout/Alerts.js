@@ -16,12 +16,20 @@ const Alerts = () => {
             });
           }
           if (alert.msg.password) {
-            alert.msg.username.map((alert_password) => {
+            alert.msg.password.map((alert_password) => {
               _alert.error(`Hasło: ${alert_password}`);
             });
           }
           if (alert.msg.non_field_errors) {
             _alert.error("Niepoprawne dane logowania");
+          }
+        }
+        if (alert.type === "success") {
+          console.log(alert);
+          if (alert.msg.logged) {
+            alert.msg.logged.map((alert_logged) => {
+              _alert.success(alert_logged);
+            });
           }
         }
       });

@@ -1,5 +1,6 @@
 //TODO:
 // [] catching errors
+// [] redirect to main page after log in
 
 import axios from "axios";
 import {
@@ -28,6 +29,7 @@ export const login = (username, password) => (dispatch) => {
         type: LOGIN_SUCCESS,
         payload: res.data,
       });
+      dispatch(showAlert({ logged: ["Pomyślnie zalogowano."] }, "success"));
     })
     .catch((err) => {
       dispatch(showAlert(err.response.data, "error"));
@@ -54,7 +56,7 @@ export const loadUser = () => (dispatch, getState) => {
   if (config) {
     dispatch({ type: USER_LOADING });
     axios
-      .get("/api/auth/user", tokenConfig(getState))
+      .get("/api/auth/user/", tokenConfig(getState))
       .then((res) => {
         dispatch({
           type: USER_LOADED,

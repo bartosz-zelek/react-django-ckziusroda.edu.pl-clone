@@ -523,8 +523,15 @@ export const Header = () => {
                   Plan lekcji
                 </a>
                 <div className="dropdown-divider"></div>
+                {/* Temporary solution for dev purposes */}
+                {!auth.isAuthenticated ? (
+                  <Link to="/zaloguj" className="dropdown-item">
+                    Zaloguj - moderator
+                  </Link>
+                ) : null}
+
                 <a className="dropdown-item" href="/admin">
-                  Zaloguj - administrator
+                  Django panel
                 </a>
               </div>
             </li>

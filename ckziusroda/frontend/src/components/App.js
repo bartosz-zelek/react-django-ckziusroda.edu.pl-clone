@@ -32,7 +32,7 @@ import "../styles/body.css";
 const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
-  });
+  }, []);
 
   const alertOptions = {
     position: "top center",
@@ -67,6 +67,7 @@ const App = () => {
               <Route exact path="/zaloguj" component={Login} />
               <SecureRoute exact path="/wyloguj" component={Logout} />
               <SecureRoute exact path="/dodaj-post" component={CreatePost} />
+              {/* <Route exact path="/dodaj-post" component={CreatePost} /> */}
             </Switch>
             <Footer />
           </>

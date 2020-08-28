@@ -5,7 +5,10 @@ import {
   GET_POSTS_BY_CATEGORY,
   GET_POSTS_BY_DATE,
   GET_POSTS_BY_PHRASE,
+  GET_CATEGORIES,
 } from "./types";
+
+import { tokenConfig } from "./authentication";
 
 export const getPostBySlug = (category_slug, post_slug) => (dispatch) => {
   axios
@@ -82,6 +85,27 @@ export const getPostsByPhrase = (phrase) => (dispatch) => {
       } else {
         dispatch({
           type: GET_POSTS_BY_PHRASE,
+          payload: "NO_RESULTS",
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getCategories = () => (dispatch, getState) => {
+  axios
+    .get("/api/categories/", tokenConfig(getState))
+    .then((res) => {
+      if (res.data.length > 0) {
+        dispatch({
+          type: GET_CATEGORIES,
+          payload: res.data,
+        });
+      } else {
+        dispatch({
+          type: GET_CATEGORIES,
           payload: "NO_RESULTS",
         });
       }

@@ -3,6 +3,7 @@ import {
   GET_POST_BY_SLUG,
   GET_POSTS_BY_PHRASE,
   GET_POSTS_BY_DATE,
+  GET_CATEGORIES,
 } from "../actions/types";
 
 const initialState = {
@@ -35,6 +36,11 @@ export default function (state = initialState, action) {
         ...state,
         posts: [],
         post: action.payload,
+      };
+    case GET_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload,
       };
     default:
       return state;

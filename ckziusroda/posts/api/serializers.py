@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import News, ImageNews, VideoNews, Post, ImagePost, VideoPost
+from ..models import News, ImageNews, VideoNews, Post, ImagePost, VideoPost, Category
 
 
 class ImageNewsSerializer(serializers.ModelSerializer):
@@ -50,3 +50,9 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = ('id', 'category_name', 'title', 'markdown_content_full', 'images',
                   'videos', 'created_date', 'owner_fullname', 'optional_authors')
+
+
+class CategoriesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'

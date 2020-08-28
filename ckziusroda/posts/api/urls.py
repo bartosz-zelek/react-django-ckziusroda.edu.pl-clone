@@ -12,5 +12,6 @@ urlpatterns = [
     path('posts/date/<int:year>/<int:month>/',
          views.PostsByDateList.as_view(), name='posts_by_date'),
     path('posts/<slug:category_slug>/<slug:post_slug>/',
-         views.PostBySlugDetail.as_view(), name='post_by_slug')
+         views.PostBySlugDetail.as_view(), name='post_by_slug'),
+    path('categories/', views.CategoriesList.as_view(), name='categories_list')
 ]

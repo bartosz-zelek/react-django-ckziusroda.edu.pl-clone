@@ -557,7 +557,7 @@ export const Header = () => {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <Link className="dropdown-item" to="dodaj-post">
+                  <Link className="dropdown-item" to="/dodaj-post">
                     Dodaj post
                   </Link>
                   <div className="dropdown-divider"></div>

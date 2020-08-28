@@ -15,6 +15,7 @@ class VideoNewsInline(admin.StackedInline):
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
     inlines = [ImageNewsInline, VideoNewsInline]
+    list_display = ('title', 'public')
 
 
 class ImagePostInline(admin.StackedInline):
@@ -33,6 +34,7 @@ class PostAdmin(admin.ModelAdmin):
         'slug': ('title',)
     }
     inlines = [ImagePostInline, VideoPostInline]
+    list_display = ('category', 'title', 'owner', 'public')
 
     def get_changeform_initial_data(self, request):
         get_data = super(PostAdmin, self).get_changeform_initial_data(request)
@@ -47,4 +49,6 @@ class CategoryAdmin(admin.ModelAdmin):
     }
 
 
-admin.site.register(Document)
+@admin.register(Document)
+class DocumentAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'url')

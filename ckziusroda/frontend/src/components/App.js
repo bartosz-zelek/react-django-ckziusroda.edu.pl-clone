@@ -18,9 +18,11 @@ import PostsByCategory from "./posts/PostsByCategory";
 import PostBySlug from "./posts/PostBySlug";
 import PostsByPhrase from "./posts/PostsByPhrase";
 import PostsByDate from "./posts/PostsByDate";
+import CreatePost from "./posts/CreatePost";
 
 import Login from "./authorization/Login";
 import Logout from "./authorization/Logout";
+import SecureRoute from "./authorization/SecureRoute";
 
 import { loadUser } from "../actions/authentication";
 
@@ -63,7 +65,8 @@ const App = () => {
                 component={PostsByDate}
               />
               <Route exact path="/zaloguj" component={Login} />
-              <Route exact path="/wyloguj" component={Logout} />
+              <SecureRoute exact path="/wyloguj" component={Logout} />
+              <SecureRoute exact path="/dodaj-post" component={CreatePost} />
             </Switch>
             <Footer />
           </>

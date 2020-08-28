@@ -8,6 +8,7 @@ from django.conf import settings
 from django.template.defaultfilters import truncatewords_html
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.template.defaultfilters import slugify
 from markdown import markdown
 import os
 
@@ -88,6 +89,10 @@ class Category(models.Model):
         verbose_name = "Kategoria"
         verbose_name_plural = "Kategorie"
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Category, self).save(*args, **kwargs)
+
     def __str__(self):
         return self.name
 
@@ -111,6 +116,10 @@ class Post(models.Model):
         verbose_name_plural = "Posty"
         ordering = ['-created']
         unique_together = ('category', 'slug')
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Post, self).save(*args, **kwargs)
 
     def created_date(self):
         return str(self.created.date())

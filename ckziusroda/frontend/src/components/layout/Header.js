@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 
 // import { mailIcon, telephoneIcon } from "../common/icons";
@@ -9,7 +9,6 @@ import "../../styles/vertical-navbar.css";
 export const Header = () => {
   const [searchPhrase, setSearchPhrase] = useState("");
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const auth = useSelector((state) => state.authentication);
 
@@ -533,8 +532,38 @@ export const Header = () => {
                 <a className="dropdown-item" href="/admin">
                   Django panel
                 </a>
+                {/* -''- */}
               </div>
             </li>
+
+            {/* Mod menu */}
+            {auth.isAuthenticated ? (
+              <li className="ml-2 nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle text-light border border-light p-3"
+                  style={{
+                    textDecoration: "none",
+                  }}
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Menu moderatora
+                </a>
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <Link className="dropdown-item" to="/wyloguj">
+                    Wyloguj się
+                  </Link>
+                  {/* <div className="dropdown-divider"></div> */}
+                </div>
+              </li>
+            ) : null}
           </ul>
         </nav>
 

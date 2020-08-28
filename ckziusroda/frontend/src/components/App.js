@@ -20,6 +20,7 @@ import PostsByPhrase from "./posts/PostsByPhrase";
 import PostsByDate from "./posts/PostsByDate";
 
 import Login from "./authorization/Login";
+import Logout from "./authorization/Logout";
 
 import { loadUser } from "../actions/authentication";
 
@@ -62,6 +63,7 @@ const App = () => {
                 component={PostsByDate}
               />
               <Route exact path="/zaloguj" component={Login} />
+              <Route exact path="/wyloguj" component={Logout} />
             </Switch>
             <Footer />
           </>

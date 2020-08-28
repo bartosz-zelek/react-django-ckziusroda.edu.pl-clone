@@ -25,7 +25,6 @@ const Alerts = () => {
           }
         }
         if (alert.type === "success") {
-          console.log(alert);
           if (alert.msg.logged) {
             alert.msg.logged.map((alert_logged) => {
               _alert.success(alert_logged);

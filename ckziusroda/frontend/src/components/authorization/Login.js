@@ -1,14 +1,17 @@
 //TODO:
-//[] redirect if logged in
+//[x] redirect if logged in
 
 import React, { useState } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import { Redirect } from "react-router-dom";
 
 import { login } from "../../actions/authentication";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const auth = useSelector((state) => state.authentication);
 
   window.document.title = "Zaloguj się – CKZiU";
 
@@ -20,7 +23,9 @@ const Login = () => {
     dispatch(login(username, password));
   };
 
-  return (
+  const redirect = <Redirect to="/" />;
+
+  const loginContent = (
     <div className="container mt-5">
       <div
         style={{ marginLeft: "12%", marginRight: "12%" }}
@@ -57,6 +62,12 @@ const Login = () => {
       </div>
     </div>
   );
+
+  if (auth.isAuthenticated) {
+    return redirect;
+  } else {
+    return loginContent;
+  }
 };
 
 export default Login;

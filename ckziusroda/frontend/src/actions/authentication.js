@@ -1,6 +1,5 @@
 //TODO:
 // [] catching errors
-// [] redirect to main page after log in
 
 import axios from "axios";
 import {
@@ -45,6 +44,7 @@ export const logout = () => (dispatch, getState) => {
     .post("api/auth/logout/", null, tokenConfig(getState))
     .then((res) => {
       dispatch({ type: LOGOUT_SUCCESS });
+      dispatch(showAlert({ logged: ["Pomyślnie wylogowano."] }, "success"));
     })
     .catch((err) => {
       console.log(err);

@@ -521,18 +521,15 @@ export const Header = () => {
                 >
                   Plan lekcji
                 </a>
-                <div className="dropdown-divider"></div>
                 {/* Temporary solution for dev purposes */}
                 {!auth.isAuthenticated ? (
-                  <Link to="/zaloguj" className="dropdown-item">
-                    Zaloguj - moderator
-                  </Link>
+                  <>
+                    <div className="dropdown-divider"></div>
+                    <Link to="/zaloguj" className="dropdown-item">
+                      Zaloguj - moderator
+                    </Link>
+                  </>
                 ) : null}
-
-                <a className="dropdown-item" href="/admin">
-                  Django panel
-                </a>
-                {/* -''- */}
               </div>
             </li>
 
@@ -560,6 +557,10 @@ export const Header = () => {
                   <Link className="dropdown-item" to="/dodaj-post">
                     Dodaj post
                   </Link>
+                  <div className="dropdown-divider"></div>
+                  <a className="dropdown-item" href="/admin">
+                    Django panel
+                  </a>
                   <div className="dropdown-divider"></div>
                   <Link className="dropdown-item" to="/wyloguj">
                     Wyloguj się

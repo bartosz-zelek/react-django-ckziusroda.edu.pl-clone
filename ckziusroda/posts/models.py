@@ -11,6 +11,8 @@ from django.dispatch import receiver
 from django.template.defaultfilters import slugify
 from markdown import markdown
 import os
+import random
+import datetime
 
 
 class ImageBase(models.Model):
@@ -99,10 +101,10 @@ class Category(models.Model):
 
 class Post(models.Model):
     category = models.ForeignKey(
-        Category, related_name="posts", on_delete=models.SET_NULL, null=True)
+        Category, related_name="posts", on_delete=models.CASCADE, null=False)
     title = models.CharField(
         max_length=200)
-    slug = models.SlugField()
+    slug = models.SlugField(blank=True)
     content = models.TextField()
     created = models.DateTimeField(
         auto_now_add=True)
@@ -118,8 +120,14 @@ class Post(models.Model):
         unique_together = ('category', 'slug')
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super(Post, self).save(*args, **kwargs)
+        try:
+            self.slug = slugify(self.title)
+            super(Post, self).save(*args, **kwargs)
+        except:
+            self.slug = '{}-{}'.format(slugify(self.title),
+                                       datetime.datetime.now().strftime("%s"))
+
+            super(Post, self).save(*args, **kwargs)
 
     def created_date(self):
         return str(self.created.date())

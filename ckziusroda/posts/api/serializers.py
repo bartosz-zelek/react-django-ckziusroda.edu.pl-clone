@@ -55,4 +55,11 @@ class PostSerializer(serializers.ModelSerializer):
 class CategoriesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = '__all__'
+        exclude = ('slug',)
+
+
+class ManipulatePostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ('category', 'title', 'slug',
+                  'content', 'owner', 'category_slug')

@@ -23,11 +23,38 @@ const Alerts = () => {
           if (alert.msg.non_field_errors) {
             _alert.error("Niepoprawne dane logowania");
           }
+          if (alert.msg.title) {
+            alert.msg.title.map((alert_title) => {
+              _alert.error(`Tytuł: ${alert_title}`);
+            });
+          }
+          if (alert.msg.content) {
+            alert.msg.content.map((alert_content) => {
+              _alert.error(`Treść: ${alert_content}`);
+            });
+          }
+          if (alert.msg.category) {
+            alert.msg.category.map(() => {
+              _alert.error("Musisz wybrać kategorię.");
+            });
+          }
         }
         if (alert.type === "success") {
           if (alert.msg.logged) {
             alert.msg.logged.map((alert_logged) => {
               _alert.success(alert_logged);
+            });
+          }
+          if (alert.msg.post_created) {
+            alert.msg.post_created.map(() => {
+              _alert.success("Pomyślnie dodano post.");
+            });
+          }
+        }
+        if (alert.type === "warning") {
+          if (alert.msg.no_permissions) {
+            alert.msg.no_permissions.map((alert_no_permissions) => {
+              _alert.info(alert_no_permissions);
             });
           }
         }

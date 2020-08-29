@@ -6,9 +6,11 @@ import {
   GET_POSTS_BY_DATE,
   GET_POSTS_BY_PHRASE,
   GET_CATEGORIES,
+  CREATE_POST,
 } from "./types";
 
 import { tokenConfig } from "./authentication";
+import { showAlert } from "./alerts";
 
 export const getPostBySlug = (category_slug, post_slug) => (dispatch) => {
   axios
@@ -113,4 +115,19 @@ export const getCategories = () => (dispatch, getState) => {
     .catch((err) => {
       console.log(err);
     });
+};
+
+export const createPost = (post) => (dispatch, getState) => {
+  axios
+    .post("/api/manipulate_posts/", post, tokenConfig(getState))
+    .then((res) => {
+      dispatch(
+        showAlert({ post_created: ["Pomyślnie dodano post."] }, "success")
+      );
+      dispatch({
+        type: CREATE_POST,
+        payload: res.data,
+      });
+    })
+    .catch((err) => dispatch(showAlert(err.response.data, "error")));
 };

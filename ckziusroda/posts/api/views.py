@@ -1,7 +1,7 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, viewsets
 from rest_framework.pagination import LimitOffsetPagination, PageNumberPagination
 from ..models import News, Post, Category
-from .serializers import NewsSerializer, PostsSerializer, PostSerializer, CategoriesSerializer
+from .serializers import NewsSerializer, PostsSerializer, PostSerializer, CategoriesSerializer, ManipulatePostSerializer
 
 
 class NewsList(generics.ListAPIView):
@@ -39,3 +39,14 @@ class CategoriesList(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     queryset = Category.objects.all()
     serializer_class = CategoriesSerializer
+
+
+class PostsViewset(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = ManipulatePostSerializer
+
+    def get_queryset(self):
+        return self.request.user.posts.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)

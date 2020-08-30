@@ -104,12 +104,53 @@ export const Header = () => {
                   >
                     Plan lekcji
                   </a>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="/admin">
-                    Zaloguj - administrator
-                  </a>
+                  {!auth.isAuthenticated ? (
+                    <>
+                      <div className="dropdown-divider"></div>
+                      <Link to="/zaloguj" className="dropdown-item">
+                        Zaloguj - moderator
+                      </Link>
+                    </>
+                  ) : null}
                 </div>
               </li>
+              {auth.isAuthenticated ? (
+                <>
+                  <div className="dropdown-divider"></div>
+                  <li className="nav-item dropdown">
+                    <a
+                      className="nav-link dropdown-toggle text-light"
+                      style={{
+                        textDecoration: "none",
+                      }}
+                      href="#"
+                      id="navbarDropdownMenuLink"
+                      role="button"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Menu moderatora
+                    </a>
+                    <div
+                      className="dropdown-menu"
+                      aria-labelledby="navbarDropdownMenuLink"
+                    >
+                      <Link className="dropdown-item" to="/dodaj-post">
+                        Dodaj post
+                      </Link>
+                      <div className="dropdown-divider"></div>
+                      <a className="dropdown-item" href="/admin">
+                        Django panel
+                      </a>
+                      <div className="dropdown-divider"></div>
+                      <Link className="dropdown-item" to="/wyloguj">
+                        Wyloguj się
+                      </Link>
+                    </div>
+                  </li>
+                </>
+              ) : null}
               <div className="dropdown-divider"></div>
               <li className="nav-item mb-5 mt-5 d-flex justify-content-center">
                 <form
@@ -410,13 +451,13 @@ export const Header = () => {
         <nav className="navbar navbar-expand-lg justify-content-center">
           <ul className="navbar-nav mr-5">
             <li className="nav-item">
-              <a href="/">
+              <Link to="/">
                 <img
                   src="../../static/frontend/pictures/logo.jpg"
                   alt="Logo CKZiU"
                   className="img-fluid"
                 />
-              </a>
+              </Link>
             </li>
           </ul>
           <ul className="navbar-nav">
@@ -521,7 +562,6 @@ export const Header = () => {
                 >
                   Plan lekcji
                 </a>
-                {/* Temporary solution for dev purposes */}
                 {!auth.isAuthenticated ? (
                   <>
                     <div className="dropdown-divider"></div>

@@ -1,7 +1,7 @@
 //TODO:
 //[x] redirect if logged in
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -22,6 +22,12 @@ const Login = () => {
     e.preventDefault();
     dispatch(login(username, password));
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      $(".vertical-nav").addClass("hidden");
+    }, 0);
+  });
 
   const redirect = <Redirect to="/" />;
 

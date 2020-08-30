@@ -10,6 +10,7 @@ const MainPage = () => {
   useEffect(() => {
     setTimeout(() => {
       $("html, body").animate({ scrollTop: 0 }, "fast");
+      $(".vertical-nav").addClass("hidden");
     }, 0);
   }, []);
 

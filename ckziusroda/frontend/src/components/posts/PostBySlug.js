@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
+
 import { useSelector, useDispatch } from "react-redux";
+
+import { clearCreatedPost } from "../../actions/posts";
+
 import { getPostBySlug } from "../../actions/posts";
 
 import renderHTML from "react-render-html";
@@ -13,7 +17,12 @@ export const PostBySlug = (match) => {
   const category_slug = match.match.params.category_slug;
   const post_slug = match.match.params.post_slug;
   const post = useSelector((state) => state.posts.post);
+  const created_post = useSelector((state) => state.posts.created_post);
   const dispatch = useDispatch();
+
+  if (created_post) {
+    dispatch(clearCreatedPost());
+  }
 
   useEffect(() => {
     dispatch(getPostBySlug(category_slug, post_slug));
@@ -22,6 +31,7 @@ export const PostBySlug = (match) => {
   useEffect(() => {
     setTimeout(() => {
       $(".vertical-nav").addClass("hidden");
+      $("html, body").animate({ scrollTop: 0 }, "fast");
     }, 0);
   });
 

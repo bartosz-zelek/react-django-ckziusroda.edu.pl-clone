@@ -7,6 +7,7 @@ import {
   GET_POSTS_BY_PHRASE,
   GET_CATEGORIES,
   CREATE_POST,
+  CLEAR_CREATED_POST,
 } from "./types";
 
 import { tokenConfig } from "./authentication";
@@ -130,4 +131,10 @@ export const createPost = (post) => (dispatch, getState) => {
       });
     })
     .catch((err) => dispatch(showAlert(err.response.data, "error")));
+};
+
+export const clearCreatedPost = () => {
+  return {
+    type: CLEAR_CREATED_POST,
+  };
 };

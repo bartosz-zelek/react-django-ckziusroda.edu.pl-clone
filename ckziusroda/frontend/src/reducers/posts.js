@@ -5,6 +5,7 @@ import {
   GET_POSTS_BY_DATE,
   GET_CATEGORIES,
   CREATE_POST,
+  CLEAR_CREATED_POST,
 } from "../actions/types";
 
 const initialState = {
@@ -37,6 +38,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         created_post: action.payload,
+      };
+    case CLEAR_CREATED_POST:
+      return {
+        ...state,
+        created_post: null,
       };
 
     default:

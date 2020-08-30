@@ -15,14 +15,14 @@ import { getCategories, createPost } from "../../actions/posts";
 
 const CreatePost = () => {
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.authentication);
+  // const auth = useSelector((state) => state.authentication);
 
-  if (!auth.isAuthenticated && !auth.isLoading) {
-    // useEffect(() => {
-    //   dispatch(showAlert({ no_permissions: ["Brak uprawnień."] }, "warning"));
-    // });
-    return <Redirect to="/" />;
-  }
+  // if (!auth.isAuthenticated && !auth.isLoading) {
+  //   // useEffect(() => {
+  //   //   dispatch(showAlert({ no_permissions: ["Brak uprawnień."] }, "warning"));
+  //   // });
+  //   return <Redirect to="/" />;
+  // }
 
   const created_post = useSelector((state) => state.posts.created_post);
   const redirect_to_created_post = (cp) => {

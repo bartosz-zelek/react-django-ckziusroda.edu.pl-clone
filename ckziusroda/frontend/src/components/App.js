@@ -20,6 +20,8 @@ import PostsByPhrase from "./posts/PostsByPhrase";
 import PostsByDate from "./posts/PostsByDate";
 import CreatePost from "./posts/CreatePost";
 
+import AddCategory from "./categories/AddCategory";
+
 import Login from "./authorization/Login";
 import Logout from "./authorization/Logout";
 import SecureRoute from "./authorization/SecureRoute";
@@ -67,7 +69,11 @@ const App = () => {
               <Route exact path="/zaloguj" component={Login} />
               <SecureRoute exact path="/wyloguj" component={Logout} />
               <SecureRoute exact path="/dodaj-post" component={CreatePost} />
-              {/* <Route exact path="/dodaj-post" component={CreatePost} /> */}
+              <SecureRoute
+                exact
+                path="/dodaj-kategorie"
+                component={AddCategory}
+              />
             </Switch>
             <Footer />
           </>

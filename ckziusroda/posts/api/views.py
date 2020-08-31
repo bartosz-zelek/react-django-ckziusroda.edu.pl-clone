@@ -35,7 +35,7 @@ class PostBySlugDetail(generics.ListAPIView):
     serializer_class = PostSerializer
 
 
-class CategoriesList(generics.ListAPIView):
+class CategoriesViewset(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     queryset = Category.objects.all()
     serializer_class = CategoriesSerializer

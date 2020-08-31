@@ -38,6 +38,11 @@ const Alerts = () => {
               _alert.error("Musisz wybrać kategorię.");
             });
           }
+          if (alert.msg.name) {
+            alert.msg.name.map((nameAlert) => {
+              _alert.error(`Nazwa: ${nameAlert}`);
+            });
+          }
         }
         if (alert.type === "success") {
           if (alert.msg.logged) {
@@ -48,6 +53,11 @@ const Alerts = () => {
           if (alert.msg.post_created) {
             alert.msg.post_created.map(() => {
               _alert.success("Pomyślnie dodano post.");
+            });
+          }
+          if (alert.msg.category_added) {
+            alert.msg.category_added.map((category_added_alert) => {
+              _alert.success(category_added_alert);
             });
           }
         }

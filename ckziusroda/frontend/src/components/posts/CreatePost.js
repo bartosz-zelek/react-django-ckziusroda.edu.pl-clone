@@ -11,7 +11,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 import { showAlert } from "../../actions/alerts";
 
-import { getCategories, createPost } from "../../actions/posts";
+import { createPost } from "../../actions/posts";
+import { getCategories } from "../../actions/categories";
 
 const CreatePost = () => {
   const dispatch = useDispatch();
@@ -32,12 +33,12 @@ const CreatePost = () => {
   useEffect(() => {
     dispatch(getCategories());
   }, []);
-  const categories = useSelector((state) => state.posts.categories);
+  const categories = useSelector((state) => state.categories.categories);
   const [category, setCategory] = useState(null);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const handeSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createPost({ category, title, content, slug: "" }));
   };
@@ -53,7 +54,7 @@ const CreatePost = () => {
             >
               <h1 className="text-center">Dodaj post</h1>
               <br />
-              <form onSubmit={(e) => handeSubmit(e)}>
+              <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="form-group">
                   <label htmlFor="selectCategory">Kategoria:</label>
                   <br />

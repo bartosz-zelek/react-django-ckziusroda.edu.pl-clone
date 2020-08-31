@@ -602,6 +602,10 @@ export const Header = () => {
                     Dodaj post
                   </Link>
                   <div className="dropdown-divider"></div>
+                  <Link className="dropdown-item" to="/dodaj-kategorie">
+                    Dodaj kategorię
+                  </Link>
+                  <div className="dropdown-divider"></div>
                   <a className="dropdown-item" href="/admin">
                     Django panel
                   </a>

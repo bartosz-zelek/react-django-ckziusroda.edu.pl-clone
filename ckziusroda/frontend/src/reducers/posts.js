@@ -29,11 +29,6 @@ export default function (state = initialState, action) {
         posts: [],
         post: action.payload,
       };
-    case GET_CATEGORIES:
-      return {
-        ...state,
-        categories: action.payload,
-      };
     case CREATE_POST:
       return {
         ...state,

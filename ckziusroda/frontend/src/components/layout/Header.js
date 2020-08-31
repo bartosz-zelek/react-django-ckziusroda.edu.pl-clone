@@ -14,12 +14,16 @@ export const Header = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      $("#sidebarCollapse").click(function () {
-        $(".vertical-nav").toggleClass("hidden");
-      });
-      $("#sidebarCollapseExit").click(function () {
-        $(".vertical-nav").toggleClass("hidden");
-      });
+      $("#sidebarCollapse")
+        .unbind("click")
+        .bind("click", function () {
+          $(".vertical-nav").toggleClass("hidden");
+        });
+      $("#sidebarCollapseExit")
+        .unbind("click")
+        .bind("click", function () {
+          $(".vertical-nav").toggleClass("hidden");
+        });
     }, 0);
   });
 

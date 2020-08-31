@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import News, ImageNews, VideoNews, Post, ImagePost, VideoPost, Category
+from ..models import News, ImageNews, VideoNews, Post, ImagePost, VideoPost, Category, Document
 
 
 class ImageNewsSerializer(serializers.ModelSerializer):
@@ -63,3 +63,9 @@ class ManipulatePostSerializer(serializers.ModelSerializer):
         model = Post
         fields = ('category', 'title', 'slug',
                   'content', 'owner', 'category_slug')
+
+
+class DocumentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Document
+        fields = ('document',)

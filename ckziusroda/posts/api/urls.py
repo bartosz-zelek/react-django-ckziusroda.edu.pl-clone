@@ -17,6 +17,7 @@ urlpatterns = [
          views.PostsByDateList.as_view(), name='posts_by_date'),
     path('posts/<slug:category_slug>/<slug:post_slug>/',
          views.PostBySlugDetail.as_view(), name='post_by_slug'),
+    path('file/', views.DocumentCreateView.as_view(), name='upload_file')
 ]
 
 urlpatterns += router.urls

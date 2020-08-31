@@ -4,6 +4,7 @@ import posts from "./posts";
 import authentication from "./authentication";
 import alerts from "./alerts";
 import categories from "./categories";
+import files from "./files";
 
 export default combineReducers({
   news,
@@ -11,4 +12,5 @@ export default combineReducers({
   authentication,
   alerts,
   categories,
+  files,
 });

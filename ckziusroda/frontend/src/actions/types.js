@@ -10,6 +10,8 @@ export const CREATE_CATEGORY = "CREATE_CATEGORY";
 export const CREATE_POST = "CREATE_POST";
 export const CLEAR_CREATED_POST = "CLEAR_CREATED_POST";
 
+export const UPLOAD_FILE = "UPLOAD_FILE";
+
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const USER_LOADING = "USER_LOADING";

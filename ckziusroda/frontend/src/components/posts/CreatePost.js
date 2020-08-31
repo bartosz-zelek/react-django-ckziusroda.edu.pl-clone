@@ -1,5 +1,6 @@
 // TODO:
-// [] take care about authorization
+// [x] take care about authorization
+// [] upload pictures and videos
 
 import React, { useState, useEffect } from "react";
 

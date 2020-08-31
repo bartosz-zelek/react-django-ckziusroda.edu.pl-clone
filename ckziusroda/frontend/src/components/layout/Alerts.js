@@ -39,8 +39,13 @@ const Alerts = () => {
             });
           }
           if (alert.msg.name) {
-            alert.msg.name.map((nameAlert) => {
-              _alert.error(`Nazwa: ${nameAlert}`);
+            alert.msg.name.map((name_alert) => {
+              _alert.error(`Nazwa: ${name_alert}`);
+            });
+          }
+          if (alert.msg.document) {
+            alert.msg.document.map((document_alert) => {
+              _alert.error(`Plik: ${document_alert}`);
             });
           }
         }
@@ -58,6 +63,11 @@ const Alerts = () => {
           if (alert.msg.category_added) {
             alert.msg.category_added.map((category_added_alert) => {
               _alert.success(category_added_alert);
+            });
+          }
+          if (alert.msg.file_uploaded) {
+            alert.msg.file_uploaded.map((file_uploaded_alert) => {
+              _alert.success(file_uploaded_alert);
             });
           }
         }

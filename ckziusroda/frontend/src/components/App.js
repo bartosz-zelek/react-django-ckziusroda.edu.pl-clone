@@ -22,6 +22,8 @@ import CreatePost from "./posts/CreatePost";
 
 import AddCategory from "./categories/AddCategory";
 
+import UploadFile from "./common/UploadFile";
+
 import Login from "./authorization/Login";
 import Logout from "./authorization/Logout";
 import SecureRoute from "./authorization/SecureRoute";
@@ -74,6 +76,7 @@ const App = () => {
                 path="/dodaj-kategorie"
                 component={AddCategory}
               />
+              <SecureRoute exact path="/przeslij-plik" component={UploadFile} />
             </Switch>
             <Footer />
           </>

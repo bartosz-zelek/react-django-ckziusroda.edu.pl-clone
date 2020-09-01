@@ -1,6 +1,6 @@
 from rest_framework import generics, permissions, viewsets
 from rest_framework.pagination import LimitOffsetPagination, PageNumberPagination
-from ..models import News, Post, Category
+from ..models import News, Post, Category, VideoPost
 from .serializers import NewsSerializer, PostsSerializer, PostSerializer, CategoriesSerializer, ManipulatePostSerializer, DocumentSerializer
 
 
@@ -49,7 +49,13 @@ class PostsViewset(viewsets.ModelViewSet):
         return self.request.user.posts.all()
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        video_links = serializer.initial_data.get('videoLinks')
+        validated_video_links = serializer.validate_links(video_links)
+        if(validated_video_links):
+            obj = serializer.save(owner=self.request.user)
+            for validated_video_link in validated_video_links:
+                VideoPost.objects.create(
+                    post=obj, url=validated_video_link)
 
 
 class DocumentCreateView(generics.CreateAPIView):

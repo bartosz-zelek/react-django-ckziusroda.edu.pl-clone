@@ -38,19 +38,12 @@ const CreatePost = () => {
   const [category, setCategory] = useState(null);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [videoLinks, setVideoLinks] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPost({ category, title, content, slug: "" }));
+    dispatch(createPost({ category, title, content, videoLinks, slug: "" }));
   };
-
-  // if (categories === "NO_RESULTS") {
-  //   dispatch(
-  //     showAlert({
-  //       no_categories: ["Brak kategorii. Najpierw musisz utworzyć kategorię."],
-  //     })
-  //   );
-  // }
 
   if (!created_post) {
     if (categories) {
@@ -65,7 +58,7 @@ const CreatePost = () => {
               <br />
               <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="form-group">
-                  <label htmlFor="selectCategory">Kategoria:</label>
+                  <label htmlFor="selectCategory">Kategoria*:</label>
                   <br />
                   <select
                     className="form-control bg-light"
@@ -88,7 +81,7 @@ const CreatePost = () => {
                   </select>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="inputTitle">Tytuł:</label>
+                  <label htmlFor="inputTitle">Tytuł*:</label>
                   <input
                     className="form-control"
                     id="inputTitle"
@@ -97,12 +90,22 @@ const CreatePost = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="inputContent">Treść:</label>
+                  <label htmlFor="inputContent">Treść*:</label>
                   <textarea
                     className="form-control"
                     id="inputContent"
                     onChange={(e) => setContent(e.target.value)}
                     value={content}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="inputVideo">Linki wideo:</label>
+                  <input
+                    className="form-control"
+                    id="inputVideo"
+                    onChange={(e) => setVideoLinks(e.target.value)}
+                    value={videoLinks}
+                    placeholder="Wstaw linki do filmów po przecinku."
                   />
                 </div>
                 <div className="text-center mt-5">

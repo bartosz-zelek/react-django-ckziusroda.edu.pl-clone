@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.core.validators import URLValidator
 from ..models import News, ImageNews, VideoNews, Post, ImagePost, VideoPost, Category, Document
 
 
@@ -63,6 +64,22 @@ class ManipulatePostSerializer(serializers.ModelSerializer):
         model = Post
         fields = ('category', 'title', 'slug',
                   'content', 'owner', 'category_slug')
+
+    def validate_links(self, video_links):
+        if (video_links):
+            try:
+                validated_links = []
+                url_validator = URLValidator()
+                for video_link in video_links.split(','):
+                    _video_link = video_link.strip()
+                    url_validator(_video_link)
+                    validated_links.append(_video_link)
+                return validated_links
+            except:
+                raise serializers.ValidationError(
+                    "Niepoprawny format adresów URL.")
+
+        return False
 
 
 class DocumentSerializer(serializers.ModelSerializer):

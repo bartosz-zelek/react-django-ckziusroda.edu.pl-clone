@@ -12,6 +12,7 @@ export default function (state = initialState, action) {
     case CREATE_CATEGORY:
       return {
         ...state,
+        categories: [],
         category_created: true,
       };
     default:

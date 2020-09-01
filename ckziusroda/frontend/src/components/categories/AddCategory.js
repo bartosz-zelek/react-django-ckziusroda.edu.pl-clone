@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 
+import { showAlert } from "../../actions/alerts";
 import { addCategory } from "../../actions/categories";
 
 const AddCategory = () => {
@@ -9,6 +10,15 @@ const AddCategory = () => {
   const category_created = useSelector(
     (state) => state.categories.category_created
   );
+  const categories = useSelector((state) => state.categories.categories);
+
+  // if (categories === "NO_RESULTS") {
+  //   dispatch(
+  //     showAlert({
+  //       no_categories: ["Brak kategorii. Najpierw musisz utworzyć kategorię."],
+  //     })
+  //   );
+  // }
 
   const [categoryName, setCategoryName] = useState("");
 

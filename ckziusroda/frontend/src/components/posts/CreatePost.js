@@ -44,6 +44,14 @@ const CreatePost = () => {
     dispatch(createPost({ category, title, content, slug: "" }));
   };
 
+  // if (categories === "NO_RESULTS") {
+  //   dispatch(
+  //     showAlert({
+  //       no_categories: ["Brak kategorii. Najpierw musisz utworzyć kategorię."],
+  //     })
+  //   );
+  // }
+
   if (!created_post) {
     if (categories) {
       if (categories !== "NO_RESULTS") {
@@ -107,8 +115,17 @@ const CreatePost = () => {
           </div>
         );
       } else {
-        // redirect to create category component
-        return <span>Brak kategorii</span>;
+        dispatch(
+          showAlert(
+            {
+              no_categories: [
+                "Brak kategorii. Aby dodać post utwórz pierwszą kategorię.",
+              ],
+            },
+            "warning"
+          )
+        );
+        return <Redirect to="dodaj-kategorie" />;
       }
     } else {
       return (
@@ -125,5 +142,3 @@ const CreatePost = () => {
 };
 
 export default CreatePost;
-
-// http://127.0.0.1:8000/#/dokumenty-szkolne/asd-1598709947

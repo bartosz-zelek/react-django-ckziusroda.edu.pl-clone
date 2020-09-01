@@ -77,6 +77,11 @@ const Alerts = () => {
               _alert.info(alert_no_permissions);
             });
           }
+          if (alert.msg.no_categories) {
+            alert.msg.no_categories.map((alert_no_categories) => {
+              _alert.info(alert_no_categories);
+            });
+          }
         }
       });
     }

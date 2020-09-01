@@ -13,6 +13,8 @@ import EmptyPage from "../common/EmptyPage";
 
 import ClipLoader from "react-spinners/ClipLoader";
 
+import "../../styles/zoom_image.css";
+
 export const PostBySlug = (match) => {
   const category_slug = match.match.params.category_slug;
   const post_slug = match.match.params.post_slug;
@@ -28,10 +30,20 @@ export const PostBySlug = (match) => {
     dispatch(getPostBySlug(category_slug, post_slug));
   }, [post_slug, category_slug]);
 
+  // https://stackoverflow.com/questions/20920714/jquery-zoom-plugin-on-image-click
   useEffect(() => {
     setTimeout(() => {
       $(".vertical-nav").addClass("hidden");
       $("html, body").animate({ scrollTop: 0 }, "fast");
+      $("img").on("click", function () {
+        const src = $(this).attr("src");
+        $("#overlay")
+          .css({ backgroundImage: `url(${src})` })
+          .addClass("open")
+          .one("click", function () {
+            $(this).removeClass("open");
+          });
+      });
     }, 0);
   });
 

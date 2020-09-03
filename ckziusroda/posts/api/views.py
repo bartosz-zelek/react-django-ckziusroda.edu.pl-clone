@@ -56,6 +56,8 @@ class PostsViewset(viewsets.ModelViewSet):
             for validated_video_link in validated_video_links:
                 VideoPost.objects.create(
                     post=obj, url=validated_video_link)
+        else:
+            serializer.save(owner=self.request.user)
 
 
 class DocumentCreateView(generics.CreateAPIView):

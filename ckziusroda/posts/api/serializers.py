@@ -77,7 +77,7 @@ class ManipulatePostSerializer(serializers.ModelSerializer):
                 return validated_links
             except:
                 raise serializers.ValidationError(
-                    "Niepoprawny format adresów URL.")
+                    {'url_err': 'Niepoprawny format adresów URL.'})
 
         return False
 

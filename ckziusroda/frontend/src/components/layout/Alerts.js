@@ -48,6 +48,9 @@ const Alerts = () => {
               _alert.error(`Plik: ${document_alert}`);
             });
           }
+          if (alert.msg.url_err) {
+            _alert.error(`Linki wideo: ${alert.msg.url_err}`);
+          }
         }
         if (alert.type === "success") {
           if (alert.msg.logged) {

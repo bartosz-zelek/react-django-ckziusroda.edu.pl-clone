@@ -13,11 +13,9 @@ const UploadFile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (file.length > 0) {
     const _file = new FormData();
     _file.append("document", file[0]);
     dispatch(uploadFile(_file));
-    // } else console.log("err");
   };
 
   useEffect(() => {

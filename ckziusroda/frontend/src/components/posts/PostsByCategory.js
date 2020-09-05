@@ -55,6 +55,7 @@ export const PostsByCategory = (match) => {
               </h1>
               {currentPosts.map((post) => (
                 <div key={post.id} className="border-bottom mb-5">
+                  {console.log(post.category_slug + "/" + post.slug + "/")}
                   <h2>{post.title}</h2>
                   <span className="text-muted">
                     📅 {post.created_date} {"\u00A0"} 🙍‍♂️ {post.owner_fullname}
@@ -64,7 +65,7 @@ export const PostsByCategory = (match) => {
                   </div>
                   <Link
                     className="btn btn-primary mb-3"
-                    to={post.category_slug + "/" + post.slug + "/"}
+                    to={post.category_slug + "/" + post.slug}
                   >
                     CZYTAJ WIĘCEJ...
                   </Link>

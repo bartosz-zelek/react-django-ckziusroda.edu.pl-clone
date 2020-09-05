@@ -1,7 +1,3 @@
-// TODO:
-// [x] take care about authorization
-// [] upload pictures and videos
-
 import React, { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -17,14 +13,6 @@ import { getCategories } from "../../actions/categories";
 
 const CreatePost = () => {
   const dispatch = useDispatch();
-  // const auth = useSelector((state) => state.authentication);
-
-  // if (!auth.isAuthenticated && !auth.isLoading) {
-  //   // useEffect(() => {
-  //   //   dispatch(showAlert({ no_permissions: ["Brak uprawnień."] }, "warning"));
-  //   // });
-  //   return <Redirect to="/" />;
-  // }
 
   const created_post = useSelector((state) => state.posts.created_post);
   const redirect_to_created_post = (cp) => {
@@ -34,15 +22,30 @@ const CreatePost = () => {
   useEffect(() => {
     dispatch(getCategories());
   }, []);
+
   const categories = useSelector((state) => state.categories.categories);
+
   const [category, setCategory] = useState(null);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [videoLinks, setVideoLinks] = useState("");
+  const [images, setImages] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPost({ category, title, content, videoLinks, slug: "" }));
+    const _data = new FormData();
+    _data.append("category", category);
+    _data.append("title", title);
+    _data.append("content", content);
+    _data.append("videoLinks", videoLinks);
+    _data.append("slug", "");
+
+    const images_length = parseInt(images.length);
+    [...Array(images_length)].map((x, i) => {
+      _data.append("images", images[i], images[i].name);
+    });
+
+    dispatch(createPost(_data));
   };
 
   if (!created_post) {
@@ -96,6 +99,17 @@ const CreatePost = () => {
                     id="inputContent"
                     onChange={(e) => setContent(e.target.value)}
                     value={content}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="inputFiles">Zdjęcia:</label>
+                  <input
+                    type="file"
+                    multiple
+                    className="form-control"
+                    id="inputFiles"
+                    accept="image/*"
+                    onChange={(e) => setImages([...e.target.files])}
                   />
                 </div>
                 <div className="form-group">

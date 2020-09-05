@@ -75,9 +75,9 @@ export const PostBySlug = (match) => {
                     {renderHTML(post_obj.markdown_content_full)}
                   </div>
                   <div style={{ textAlign: "center" }}>
-                    <p>
+                    <div>
                       {post_obj.images.map((image) => renderHTML(image.render))}
-                    </p>
+                    </div>
                     <p>
                       {post_obj.videos.map((video) => renderHTML(video.render))}
                     </p>

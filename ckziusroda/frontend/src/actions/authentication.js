@@ -1,6 +1,3 @@
-//TODO:
-// [] catching errors
-
 import axios from "axios";
 import {
   LOGIN_SUCCESS,

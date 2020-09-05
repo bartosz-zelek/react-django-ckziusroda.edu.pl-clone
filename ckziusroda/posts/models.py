@@ -9,6 +9,7 @@ from django.template.defaultfilters import truncatewords_html
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.template.defaultfilters import slugify
+from django.db import IntegrityError
 from markdown import markdown
 import os
 import random
@@ -16,7 +17,7 @@ import datetime
 
 
 class ImageBase(models.Model):
-    file = models.FileField(upload_to='images')
+    file = models.ImageField(upload_to='images')
 
     class Meta:
         abstract = True
@@ -117,17 +118,19 @@ class Post(models.Model):
         verbose_name = "Post"
         verbose_name_plural = "Posty"
         ordering = ['-created']
-        unique_together = ('category', 'slug')
 
     def save(self, *args, **kwargs):
-        try:
+        # unique_together caused error with transactions, I decided on this solution
+        # TODO: user in django admin can intentionally force slug to be non unique - TO FIX
+        edit_post = Post.objects.filter(id=self.pk)  # get if edit
+        if not edit_post:
             self.slug = slugify(self.title)
-            super(Post, self).save(*args, **kwargs)
-        except:
-            self.slug = '{}-{}'.format(slugify(self.title),
-                                       datetime.datetime.now().strftime("%s"))
+            # unique together self and category
+            if Post.objects.filter(slug=self.slug, category=self.category):
+                self.slug = '{}-{}'.format(slugify(self.title),
+                                           datetime.datetime.now().strftime("%s"))
 
-            super(Post, self).save(*args, **kwargs)
+        super(Post, self).save(*args, **kwargs)
 
     def created_date(self):
         return str(self.created.date())

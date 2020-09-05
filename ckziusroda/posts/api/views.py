@@ -1,7 +1,8 @@
 from rest_framework import generics, permissions, viewsets
 from rest_framework.pagination import LimitOffsetPagination, PageNumberPagination
-from ..models import News, Post, Category, VideoPost
+from ..models import News, Post, Category, VideoPost, ImagePost
 from .serializers import NewsSerializer, PostsSerializer, PostSerializer, CategoriesSerializer, ManipulatePostSerializer, DocumentSerializer
+from django.core.files.base import ContentFile
 
 
 class NewsList(generics.ListAPIView):
@@ -51,13 +52,20 @@ class PostsViewset(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         video_links = serializer.initial_data.get('videoLinks')
         validated_video_links = serializer.validate_links(video_links)
+
+        images = serializer.initial_data.getlist('images')
+
+        obj = serializer.save(owner=self.request.user)
         if(validated_video_links):
-            obj = serializer.save(owner=self.request.user)
             for validated_video_link in validated_video_links:
                 VideoPost.objects.create(
                     post=obj, url=validated_video_link)
-        else:
-            serializer.save(owner=self.request.user)
+
+        # print(serializer.initial_data)
+
+        if(images):
+            for image in images:
+                ImagePost.objects.create(post=obj, file=image)
 
 
 class DocumentCreateView(generics.CreateAPIView):

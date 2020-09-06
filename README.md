@@ -11,4 +11,4 @@ Tips:
 - Model *Document* let admin upload the file to the server and get a relative url to the item. Then admin can use this url in *Post* or *News* using Markdown syntax.
 - Admin can directly go to post modiication view by going to it on the website and pressing the *~* key.
 
-Link: ckziusroda-clone.cf
+Link: https://ckziusroda-clone.cf

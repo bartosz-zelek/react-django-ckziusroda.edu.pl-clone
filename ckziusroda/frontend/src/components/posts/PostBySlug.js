@@ -78,9 +78,9 @@ export const PostBySlug = (match) => {
                     <div>
                       {post_obj.images.map((image) => renderHTML(image.render))}
                     </div>
-                    <p>
+                    <div className="embed-responsive embed-responsive-16by9">
                       {post_obj.videos.map((video) => renderHTML(video.render))}
-                    </p>
+                    </div>
                   </div>
                   {post_obj.optional_authors ? (
                     <p className="text-right text-muted">

@@ -11,9 +11,11 @@ const ArchiveMonths = () => {
 
   const history = useHistory();
 
-  const handleOnClick = (e) => {
+  const handleOnChange = (e) => {
     const date_arr = e.target.value.split(" ");
-    history.push(`/archiwum/${date_arr[1]}/${date_arr[0]}`);
+    e.target.value = "";
+    if (date_arr.length === 2)
+      history.push(`/archiwum/${date_arr[1]}/${date_arr[0]}`);
   };
 
   return (
@@ -21,16 +23,14 @@ const ArchiveMonths = () => {
       className="form-control bg-light"
       style={{ maxWidth: "200px", display: "inline-block" }}
       defaultValue=""
+      onChange={(e) => handleOnChange(e)}
     >
       <option disabled value="">
         Wybierz miesiąc
       </option>
       {[...Array(12)].map((x, i) => (
         <Fragment key={i}>
-          <option
-            onClick={(e) => handleOnClick(e)}
-            value={`${temp_month} ${temp_year}`}
-          >
+          <option value={`${temp_month} ${temp_year}`}>
             {months[temp_month]} {temp_year}
           </option>
           {temp_month--}

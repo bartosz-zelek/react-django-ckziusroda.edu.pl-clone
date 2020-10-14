@@ -12,3 +12,6 @@ Tips:
 - Admin can directly go to post modiication view by going to it on the website and pressing the *~* key.
 
 Link: https://ckziusroda-clone.cf
+
+npm12 run dev
+python manage.py collectstatic

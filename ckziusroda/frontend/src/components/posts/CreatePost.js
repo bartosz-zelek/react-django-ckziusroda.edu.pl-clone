@@ -66,6 +66,7 @@ const CreatePost = () => {
                   <select
                     className="form-control bg-light"
                     style={{ maxWidth: "200px", display: "inline-block" }}
+                    onChange={(e) => setCategory(e.target.value)}
                     id="selectCategory"
                     defaultValue=""
                   >
@@ -75,7 +76,6 @@ const CreatePost = () => {
                     {categories.map((category) => (
                       <option
                         value={category.id}
-                        onClick={(e) => setCategory(e.target.value)}
                         key={category.id}
                       >
                         {category.name}

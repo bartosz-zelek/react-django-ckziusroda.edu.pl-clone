@@ -30,11 +30,11 @@ const ArchiveMonths = () => {
       </option>
       {[...Array(12)].map((x, i) => (
         <Fragment key={i}>
+          {temp_month--}
+          {temp_month < 1 ? ((temp_month = 12), temp_year--) : null}
           <option value={`${temp_month} ${temp_year}`}>
             {months[temp_month]} {temp_year}
           </option>
-          {temp_month--}
-          {temp_month < 1 ? ((temp_month = 12), temp_year--) : null}
         </Fragment>
       ))}
     </select>

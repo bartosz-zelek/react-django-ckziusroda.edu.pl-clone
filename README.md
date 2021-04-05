@@ -1,5 +1,8 @@
 # react-django-ckziusroda.edu.pl-clone
-A clone of my school page https://ckziusroda.edu.pl/.
+
+Link: https://ckziusroda-clone.cf
+
+A clone of my school page (https://ckziusroda.edu.pl/).
 
 Used:
 - Frontend: React
@@ -11,7 +14,6 @@ Tips:
 - Model *Document* let admin upload the file to the server and get a relative url to the item. Then admin can use this url in *Post* or *News* using Markdown syntax.
 - Admin can directly go to post modification view by going to it on the website and pressing the *~* key.
 
-Link: https://ckziusroda-clone.cf
 
 npm12 run dev
 python manage.py collectstatic

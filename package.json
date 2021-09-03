@@ -20,7 +20,7 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-plugin-emotion": "^10.0.33",
     "css-loader": "^4.2.1",
     "prop-types": "^15.7.2",

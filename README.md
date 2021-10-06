@@ -1,6 +1,6 @@
 # react-django-ckziusroda.edu.pl-clone
 
-Link: https://ckziusroda-clone.cf
+Link: https://ckziusroda-clone.cf (w czasie odnawiania domeny)
 
 A clone of my school page (https://ckziusroda.edu.pl/).
 

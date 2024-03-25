@@ -1,5 +1,3 @@
-Link: https://ckziusroda-clone.cf
-
 A clone of my school page (https://ckziusroda.edu.pl/).
 
 Used:
